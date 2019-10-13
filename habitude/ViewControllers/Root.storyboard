@@ -48,6 +48,9 @@
                         <viewLayoutGuide key="safeArea" id="uUM-de-sGA"/>
                     </view>
                     <navigationItem key="navigationItem" id="x16-0F-6gQ"/>
+                    <connections>
+                        <outlet property="collectionView" destination="xeG-Y1-w3q" id="nOK-PE-cPo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehm-6l-cth" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
