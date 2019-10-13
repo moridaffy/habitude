@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingsViewController.swift
 //  habitude
 //
 //  Created by Maxim Skryabin on 13.10.2019.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class SettingsViewController: UIViewController {
+  
+  private let viewModel = SettingsViewModel()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
   }
-
-
 }
-
