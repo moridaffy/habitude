@@ -29,7 +29,9 @@ class HabitListViewController: UIViewController {
   }
   
   private func setupCollectionView() {
-    
+    collectionView.delegate = self
+    collectionView.dataSource = self
+    collectionView.register(UINib(nibName: "HabitListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HabitListCollectionViewCell")
   }
   
   private func setupReactive() {
@@ -64,5 +66,33 @@ class HabitListViewController: UIViewController {
   @objc private func settingsButtonTapped() {
     guard let settingsViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController else { fatalError() }
     present(settingsViewController, animated: true, completion: nil)
+  }
+}
+
+// MARK: - UICollectionViewDelegate implementation
+
+extension HabitListViewController: UICollectionViewDelegate {
+  
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout implementation
+
+extension HabitListViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let width = collectionView.frame.width / 2.0
+    return CGSize(width: width, height: width)
+  }
+}
+
+// MARK: - UICollectionViewDataSource implementation
+
+extension HabitListViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 5
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitListCollectionViewCell", for: indexPath) as? HabitListCollectionViewCell else { fatalError() }
+    return cell
   }
 }
