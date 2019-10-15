@@ -78,6 +78,7 @@
                             <constraint firstItem="zs8-Nl-gJ2" firstAttribute="leading" secondItem="GLr-C0-bP7" secondAttribute="leading" id="8In-5b-eHF"/>
                             <constraint firstItem="zs8-Nl-gJ2" firstAttribute="top" secondItem="GLr-C0-bP7" secondAttribute="top" id="G3a-Hr-8hS"/>
                             <constraint firstAttribute="bottom" secondItem="zs8-Nl-gJ2" secondAttribute="bottom" id="JEM-aZ-o7C"/>
+                            <constraint firstAttribute="width" secondItem="GLr-C0-bP7" secondAttribute="height" multiplier="1:1" id="fb2-TL-zGh"/>
                         </constraints>
                     </view>
                 </subviews>

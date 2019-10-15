@@ -8,4 +8,10 @@
 
 class HabitListCollectionViewCellModel {
   
+  let habit: Habit
+  
+  init(habit: Habit) {
+    self.habit = habit
+  }
+  
 }

@@ -8,4 +8,6 @@
 
 class HabitListViewModel {
   
+  let habits = DataManager.shared.getTestHabits()
+  
 }

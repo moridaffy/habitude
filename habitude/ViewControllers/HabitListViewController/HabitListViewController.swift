@@ -31,6 +31,18 @@ class HabitListViewController: UIViewController {
   }
   
   private func setupCollectionView() {
+    
+    let sideInset: CGFloat = 4.0
+    let cellWidth = collectionView.frame.width / 2.0  - sideInset * 2.0
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .vertical
+    layout.itemSize = CGSize(width: cellWidth, height: cellWidth)
+    layout.sectionInset = UIEdgeInsets.zero
+    layout.minimumLineSpacing = 0.0
+    layout.minimumInteritemSpacing = 0.0
+    
+    collectionView.contentInset = UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
+    collectionView.setCollectionViewLayout(layout, animated: false)
     collectionView.delegate = self
     collectionView.dataSource = self
     collectionView.register(UINib(nibName: "HabitListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HabitListCollectionViewCell")
@@ -77,24 +89,16 @@ extension HabitListViewController: UICollectionViewDelegate {
   
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout implementation
-
-extension HabitListViewController: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let width = collectionView.frame.width / 2.0
-    return CGSize(width: width, height: width)
-  }
-}
-
 // MARK: - UICollectionViewDataSource implementation
 
 extension HabitListViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return viewModel.habits.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitListCollectionViewCell", for: indexPath) as? HabitListCollectionViewCell else { fatalError() }
+    cell.setup(viewModel: HabitListCollectionViewCellModel(habit: viewModel.habits[indexPath.row]))
     return cell
   }
 }
