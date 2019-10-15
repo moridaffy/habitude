@@ -22,6 +22,10 @@
 		0C662C402354511F00515DF8 /* HabitListCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C662C3F2354511F00515DF8 /* HabitListCollectionViewCellModel.swift */; };
 		0C662C452354554900515DF8 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 0C662C442354554900515DF8 /* RxDataSources */; };
 		0C662C482354559D00515DF8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C662C472354559D00515DF8 /* RealmSwift */; };
+		0CB7DA2C2356432200D93033 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA2B2356432200D93033 /* Habit.swift */; };
+		0CB7DA2E2356445E00D93033 /* HabitIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA2D2356445E00D93033 /* HabitIcon.swift */; };
+		0CB7DA30235644B100D93033 /* HabitColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA2F235644B100D93033 /* HabitColor.swift */; };
+		0CB7DA32235644E100D93033 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA31235644E100D93033 /* UIColor+Hex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		0C662C3B2354510A00515DF8 /* HabitListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C662C3C2354510A00515DF8 /* HabitListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitListCollectionViewCell.xib; sourceTree = "<group>"; };
 		0C662C3F2354511F00515DF8 /* HabitListCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListCollectionViewCellModel.swift; sourceTree = "<group>"; };
+		0CB7DA2B2356432200D93033 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		0CB7DA2D2356445E00D93033 /* HabitIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitIcon.swift; sourceTree = "<group>"; };
+		0CB7DA2F235644B100D93033 /* HabitColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitColor.swift; sourceTree = "<group>"; };
+		0CB7DA31235644E100D93033 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +124,7 @@
 		0C22432623538E09002474CD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0CB7DA31235644E100D93033 /* UIColor+Hex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -132,6 +141,9 @@
 		0C22432B23538EBC002474CD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0CB7DA2B2356432200D93033 /* Habit.swift */,
+				0CB7DA2D2356445E00D93033 /* HabitIcon.swift */,
+				0CB7DA2F235644B100D93033 /* HabitColor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,10 +258,14 @@
 			files = (
 				0C22433223538F1B002474CD /* HabitCreationViewController.swift in Sources */,
 				0C662C402354511F00515DF8 /* HabitListCollectionViewCellModel.swift in Sources */,
+				0CB7DA30235644B100D93033 /* HabitColor.swift in Sources */,
 				0C22432F23538EF3002474CD /* HabitListViewModel.swift in Sources */,
 				0C1F24A323537B4B00533AF1 /* AppDelegate.swift in Sources */,
 				0C22432D23538ECD002474CD /* HabitListViewController.swift in Sources */,
+				0CB7DA2E2356445E00D93033 /* HabitIcon.swift in Sources */,
 				0C22433423538F46002474CD /* HabitCreationViewModel.swift in Sources */,
+				0CB7DA2C2356432200D93033 /* Habit.swift in Sources */,
+				0CB7DA32235644E100D93033 /* UIColor+Hex.swift in Sources */,
 				0C662C3D2354510A00515DF8 /* HabitListCollectionViewCell.swift in Sources */,
 				0C22433723538F5E002474CD /* SettingsViewController.swift in Sources */,
 				0C22433923538F7F002474CD /* SettingsViewModel.swift in Sources */,
