@@ -10,11 +10,9 @@ import UIKit
 
 struct HabitColor {
   let code: String
-  let isDark: Bool
   var color: UIColor { return UIColor(hex: code) ?? .black }
   
-  init(code: String, isDark: Bool) {
+  init(code: String) {
     self.code = code
-    self.isDark = isDark
   }
 }

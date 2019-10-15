@@ -26,6 +26,7 @@
 		0CB7DA2E2356445E00D93033 /* HabitIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA2D2356445E00D93033 /* HabitIcon.swift */; };
 		0CB7DA30235644B100D93033 /* HabitColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA2F235644B100D93033 /* HabitColor.swift */; };
 		0CB7DA32235644E100D93033 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA31235644E100D93033 /* UIColor+Hex.swift */; };
+		0CB7DA362356474B00D93033 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA352356474B00D93033 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		0CB7DA2D2356445E00D93033 /* HabitIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitIcon.swift; sourceTree = "<group>"; };
 		0CB7DA2F235644B100D93033 /* HabitColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitColor.swift; sourceTree = "<group>"; };
 		0CB7DA31235644E100D93033 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		0CB7DA352356474B00D93033 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		0C22432523538E00002474CD /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0CB7DA352356474B00D93033 /* DataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				0C22433223538F1B002474CD /* HabitCreationViewController.swift in Sources */,
 				0C662C402354511F00515DF8 /* HabitListCollectionViewCellModel.swift in Sources */,
 				0CB7DA30235644B100D93033 /* HabitColor.swift in Sources */,
+				0CB7DA362356474B00D93033 /* DataManager.swift in Sources */,
 				0C22432F23538EF3002474CD /* HabitListViewModel.swift in Sources */,
 				0C1F24A323537B4B00533AF1 /* AppDelegate.swift in Sources */,
 				0C22432D23538ECD002474CD /* HabitListViewController.swift in Sources */,
