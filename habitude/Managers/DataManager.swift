@@ -40,23 +40,23 @@ class DataManager {
 extension DataManager {
   func getTestHabits() -> [Habit] {
     return [
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6")),
-      Habit(name: "Drinking water", icon: HabitIcon(code: "habit_icon_water"), color: HabitColor(code: "4e81e6"))
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6")),
+      Habit(name: "Drinking water", icon: HabitIcon(code: "icon_habit_water"), color: HabitColor(code: "4e81e6"))
     ]
   }
 }

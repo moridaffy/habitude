@@ -16,8 +16,12 @@ class Habit: Object {
   @objc private dynamic var iconCode: String = ""
   @objc private dynamic var colorCode: String = ""
   
-  var color: UIColor { return HabitColor(code: colorCode).color }
-  var icon: UIImage? { return HabitIcon(code: iconCode).icon }
+  private var habitIcon: HabitIcon { return HabitIcon(code: iconCode) }
+  private var habitColor: HabitColor { return HabitColor(code: colorCode) }
+  
+  var color: UIColor { return habitColor.color }
+  var icon: UIImage? { return habitIcon.icon }
+  var iconColor: UIColor { return habitColor.isDark ? UIColor.white : UIColor.black }
   
   convenience init(name: String, icon: HabitIcon, color: HabitColor) {
     self.init()

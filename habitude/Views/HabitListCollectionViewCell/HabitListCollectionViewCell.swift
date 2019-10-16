@@ -39,6 +39,12 @@ class HabitListCollectionViewCell: UICollectionViewCell {
   }
   
   private func setupHabit() {
-    
+    // TODO
+    // counterLabel.text = ???
+    counterLabel.textColor = viewModel.habit.iconColor
+    titleLabel.text = viewModel.habit.name
+    titleLabel.textColor = viewModel.habit.iconColor
+    iconImageView.image = viewModel.habit.icon
+    iconImageView.tintColor = viewModel.habit.iconColor
   }
 }
