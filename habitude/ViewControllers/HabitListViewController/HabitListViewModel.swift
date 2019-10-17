@@ -6,8 +6,13 @@
 //  Copyright © 2019 MSKR. All rights reserved.
 //
 
+import RxSwift
+
 class HabitListViewModel {
   
-  let habits = DataManager.shared.getTestHabits()
+  let habits = Variable([] as [Habit])
   
+  init() {
+    habits.value = DataManager.shared.getTestHabits()
+  }
 }
