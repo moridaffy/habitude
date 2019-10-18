@@ -43,7 +43,7 @@ class HabitListViewController: UIViewController {
     viewModel.habits.asObservable()
       .bind(to: collectionView.rx.items) { collectionView, row, habit in
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitListCollectionViewCell", for: IndexPath(row: row, section: 0)) as? HabitListCollectionViewCell else { fatalError() }
-        cell.setup(viewModel: HabitListCollectionViewCellModel(habit: habit))
+        cell.setup(habit: habit, delegate: self)
         return cell
       }.disposed(by: disposeBag)
   }
@@ -79,6 +79,8 @@ class HabitListViewController: UIViewController {
     return layout
   }
   
+  // MARK: - Actions
+  
   @objc private func createButtonTapped() {
     guard let habitCreationViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "HabitCreationViewController") as? HabitCreationViewController else { fatalError() }
     present(habitCreationViewController, animated: true, completion: nil)
@@ -87,5 +89,19 @@ class HabitListViewController: UIViewController {
   @objc private func settingsButtonTapped() {
     guard let settingsViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController else { fatalError() }
     present(settingsViewController, animated: true, completion: nil)
+  }
+}
+
+// MARK: - HabitListCollectionViewCellDelegate implementation
+
+extension HabitListViewController: HabitListCollectionViewCellDelegate {
+  func didActivateHabit(_ habit: Habit) {
+    // TODO
+    print("Did activate \(habit.name)")
+  }
+  
+  func didTapDetailsButton(for habit: Habit) {
+    // TODO
+    print("Did tap details for \(habit.name)")
   }
 }
