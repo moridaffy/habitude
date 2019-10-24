@@ -83,12 +83,22 @@ class HabitListViewController: UIViewController {
   
   @objc private func createButtonTapped() {
     guard let habitCreationViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "HabitCreationViewController") as? HabitCreationViewController else { fatalError() }
-    present(habitCreationViewController, animated: true, completion: nil)
+    if #available(iOS 13.0, *) {
+      present(habitCreationViewController, animated: true, completion: nil)
+    } else {
+      let navigationController = UINavigationController(rootViewController: habitCreationViewController)
+      present(navigationController, animated: true, completion: nil)
+    }
   }
   
   @objc private func settingsButtonTapped() {
     guard let settingsViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController else { fatalError() }
-    present(settingsViewController, animated: true, completion: nil)
+    if #available(iOS 13.0, *) {
+      present(settingsViewController, animated: true, completion: nil)
+    } else {
+      let navigationController = UINavigationController(rootViewController: settingsViewController)
+      present(navigationController, animated: true, completion: nil)
+    }
   }
 }
 
