@@ -10,7 +10,7 @@ import UIKit
 
 struct HabitIcon {
   let code: String
-  var icon: UIImage? { return UIImage(named: code) }
+  var icon: UIImage? { return UIImage(named: code)?.withRenderingMode(.alwaysTemplate) }
   
   init(code: String) {
     self.code = code

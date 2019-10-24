@@ -58,8 +58,9 @@ class HabitListCollectionViewCell: UICollectionViewCell {
   }
   
   private func setupActions() {
+    let detailsButtonIcon = #imageLiteral(resourceName: "icon_details").withRenderingMode(.alwaysTemplate)
     detailsButton.setTitle(nil, for: .normal)
-    detailsButton.setImage(UIImage(named: "icon_details")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    detailsButton.setImage(detailsButtonIcon, for: .normal)
     detailsButton.tintColor = viewModel.habit.iconColor
     detailsButton.addTarget(self, action: #selector(didTapDetailsButton), for: .touchUpInside)
     

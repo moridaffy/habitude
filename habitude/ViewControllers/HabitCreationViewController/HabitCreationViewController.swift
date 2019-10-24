@@ -29,12 +29,18 @@ class HabitCreationViewController: UIViewController {
   }
   
   private func setupNavigationBar() {
+    let closeButtonIcon = #imageLiteral(resourceName: "icon_close").withRenderingMode(.alwaysTemplate)
     let closeButton = UIButton()
     closeButton.setTitle(nil, for: .normal)
-    closeButton.setImage(UIImage(named: "icon_close")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    closeButton.setImage(closeButtonIcon, for: .normal)
     closeButton.tintColor = UIColor.black
     closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
     navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+    
+    NSLayoutConstraint.activate([
+      closeButton.widthAnchor.constraint(equalToConstant: 24.0),
+      closeButton.heightAnchor.constraint(equalToConstant: 24.0)
+    ])
   }
   
   private func setupUI() {

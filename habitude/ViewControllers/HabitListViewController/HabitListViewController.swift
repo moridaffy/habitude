@@ -27,8 +27,17 @@ class HabitListViewController: UIViewController {
   }
   
   private func setupNavigationBar() {
-    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: getSettingsButton())
-    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: getCreateButton())
+    let settingsButton = getSettingsButton()
+    let createButton = getCreateButton()
+    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: settingsButton)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: createButton)
+    
+    NSLayoutConstraint.activate([
+      settingsButton.widthAnchor.constraint(equalToConstant: 24.0),
+      settingsButton.heightAnchor.constraint(equalToConstant: 24.0),
+      createButton.widthAnchor.constraint(equalToConstant: 24.0),
+      createButton.heightAnchor.constraint(equalToConstant: 24.0)
+    ])
   }
   
   private func setupCollectionView() {
@@ -49,7 +58,7 @@ class HabitListViewController: UIViewController {
   }
   
   private func getSettingsButton() -> UIButton {
-    let settingsButtonIcon = UIImage(named: "icon_settings")
+    let settingsButtonIcon = #imageLiteral(resourceName: "icon_settings").withRenderingMode(.alwaysTemplate)
     let button = UIButton()
     button.setTitle(nil, for: .normal)
     button.setImage(settingsButtonIcon, for: .normal)
@@ -59,7 +68,7 @@ class HabitListViewController: UIViewController {
   }
   
   private func getCreateButton() -> UIButton {
-    let createButtonIcon = UIImage(named: "icon_plus")
+    let createButtonIcon = #imageLiteral(resourceName: "icon_plus").withRenderingMode(.alwaysTemplate)
     let button = UIButton()
     button.setTitle(nil, for: .normal)
     button.setImage(createButtonIcon, for: .normal)
@@ -69,7 +78,7 @@ class HabitListViewController: UIViewController {
   }
   
   private func getCollectionViewLayout(sideInset: CGFloat) -> UICollectionViewFlowLayout {
-    let cellWidth = collectionView.frame.width / 2.0  - sideInset * 2.0
+    let cellWidth = UIScreen.main.bounds.width / 2.0  - sideInset * 2.0
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
     layout.itemSize = CGSize(width: cellWidth, height: cellWidth)
