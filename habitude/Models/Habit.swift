@@ -21,7 +21,6 @@ class Habit: Object {
   
   var color: UIColor { return habitColor.color }
   var icon: UIImage? { return habitIcon.icon }
-  var iconColor: UIColor { return habitColor.isDark ? UIColor.white : UIColor.black }
   
   convenience init(name: String, icon: HabitIcon, color: HabitColor) {
     self.init()

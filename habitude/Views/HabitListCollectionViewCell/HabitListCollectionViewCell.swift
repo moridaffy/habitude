@@ -50,18 +50,18 @@ class HabitListCollectionViewCell: UICollectionViewCell {
   private func setupHabit() {
     // TODO
     // counterLabel.text = ???
-    counterLabel.textColor = viewModel.habit.iconColor
+    counterLabel.textColor = UIColor.white
     titleLabel.text = viewModel.habit.name
-    titleLabel.textColor = viewModel.habit.iconColor
+    titleLabel.textColor = UIColor.white
     iconImageView.image = viewModel.habit.icon
-    iconImageView.tintColor = viewModel.habit.iconColor
+    iconImageView.tintColor = UIColor.white
   }
   
   private func setupActions() {
     let detailsButtonIcon = #imageLiteral(resourceName: "icon_details").withRenderingMode(.alwaysTemplate)
     detailsButton.setTitle(nil, for: .normal)
     detailsButton.setImage(detailsButtonIcon, for: .normal)
-    detailsButton.tintColor = viewModel.habit.iconColor
+    detailsButton.tintColor = UIColor.white
     detailsButton.addTarget(self, action: #selector(didTapDetailsButton), for: .touchUpInside)
     
     let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didActivateHabit))

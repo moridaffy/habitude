@@ -35,6 +35,50 @@ class DataManager {
   }
 }
 
+extension DataManager {
+  func getHabitIcons() -> [HabitIcon] {
+    return [
+      HabitIcon(code: "icon_habit_water"),
+      HabitIcon(code: "icon_habit_tooth"),
+      HabitIcon(code: "icon_habit_meditate"),
+      HabitIcon(code: "icon_habit_nojunkfood"),
+      HabitIcon(code: "icon_habit_nomilk"),
+      HabitIcon(code: "icon_habit_book"),
+      HabitIcon(code: "icon_habit_takepills"),
+      HabitIcon(code: "icon_habit_sunrise"),
+      HabitIcon(code: "icon_habit_healthyfood"),
+      HabitIcon(code: "icon_habit_music"),
+      HabitIcon(code: "icon_habit_feeddog"),
+      HabitIcon(code: "icon_habit_feedcat"),
+      HabitIcon(code: "icon_habit_clean"),
+      HabitIcon(code: "icon_habit_noalcohol"),
+      HabitIcon(code: "icon_habit_gym"),
+      HabitIcon(code: "icon_habit_nocoffee")
+    ]
+  }
+  
+  func getHabitColors() -> [HabitColor] {
+    return [
+      HabitColor(code: "2EC4B6"),
+      HabitColor(code: "38A700"),
+      HabitColor(code: "1975FF"),
+      HabitColor(code: "E8AA14"),
+      HabitColor(code: "FF5714"),
+      HabitColor(code: "FE404F"),
+      HabitColor(code: "C114E8"),
+      HabitColor(code: "96D1C7"),
+      HabitColor(code: "6E0D25"),
+      HabitColor(code: "A34A28"),
+      HabitColor(code: "FFA069"),
+      HabitColor(code: "B3679B"),
+      HabitColor(code: "7CA982"),
+      HabitColor(code: "243E36"),
+      HabitColor(code: "00818A"),
+      HabitColor(code: "083D77")
+    ]
+  }
+}
+
 // MARK: - Test data
 
 extension DataManager {
