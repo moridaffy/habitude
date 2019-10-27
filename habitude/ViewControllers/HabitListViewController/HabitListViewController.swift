@@ -92,6 +92,7 @@ class HabitListViewController: UIViewController {
   
   @objc private func createButtonTapped() {
     guard let habitCreationViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "HabitCreationViewController") as? HabitCreationViewController else { fatalError() }
+    habitCreationViewController.setup(delegate: self)
     if #available(iOS 13.0, *) {
       present(habitCreationViewController, animated: true, completion: nil)
     } else {
@@ -122,5 +123,13 @@ extension HabitListViewController: HabitListCollectionViewCellDelegate {
   func didTapDetailsButton(for habit: Habit) {
     // TODO
     print("Did tap details for \(habit.name)")
+  }
+}
+
+// MARK: - HabitCreationViewControllerDelegate implementation
+
+extension HabitListViewController: HabitCreationViewControllerDelegate {
+  func didCreateNewHabit() {
+    viewModel.reloadHabits()
   }
 }

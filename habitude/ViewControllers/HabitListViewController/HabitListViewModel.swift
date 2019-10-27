@@ -13,6 +13,10 @@ class HabitListViewModel {
   let habits = Variable([] as [Habit])
   
   init() {
-    habits.value = DataManager.shared.getTestHabits()
+    reloadHabits()
+  }
+  
+  func reloadHabits() {
+    self.habits.value = DBManager.shared.getHabits()
   }
 }

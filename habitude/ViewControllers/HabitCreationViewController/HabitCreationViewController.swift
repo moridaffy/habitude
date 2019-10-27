@@ -9,6 +9,10 @@
 import UIKit
 import RxSwift
 
+protocol HabitCreationViewControllerDelegate: class {
+  func didCreateNewHabit()
+}
+
 class HabitCreationViewController: UIViewController {
   
   @IBOutlet private weak var habitPreviewContainerView: UIView!
@@ -21,6 +25,7 @@ class HabitCreationViewController: UIViewController {
   
   private let viewModel = HabitCreationViewModel()
   private let disposeBag = DisposeBag()
+  private weak var delegate: HabitCreationViewControllerDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,6 +37,10 @@ class HabitCreationViewController: UIViewController {
     if #available(iOS 13.0, *) { } else {
       setupNavigationBar()
     }
+  }
+  
+  func setup(delegate: HabitCreationViewControllerDelegate) {
+    self.delegate = delegate
   }
   
   private func setupNavigationBar() {
@@ -113,6 +122,7 @@ class HabitCreationViewController: UIViewController {
     }
     
     viewModel.saveHabit(name: habitName)
+    delegate?.didCreateNewHabit()
     dismissViewController()
   }
   
