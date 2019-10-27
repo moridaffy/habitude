@@ -16,6 +16,6 @@ extension UIView {
     animation.autoreverses = true
     animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - position, y: self.center.y))
     animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + position, y: self.center.y))
-    self.layer.add(animation, forKey: "position")
+    layer.add(animation, forKey: "position")
   }
 }

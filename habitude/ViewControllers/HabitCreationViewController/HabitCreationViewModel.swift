@@ -28,4 +28,9 @@ class HabitCreationViewModel {
     return HabitColor(code: "CCCCCC")
   }
   
+  func saveHabit(name: String) {
+    let habit = Habit(name: name, icon: selectedHabitIcon.value, color: selectedHabitColor.value)
+    DBManager.shared.saveHabit(habit)
+  }
+  
 }

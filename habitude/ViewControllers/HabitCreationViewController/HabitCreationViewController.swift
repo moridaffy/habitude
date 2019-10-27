@@ -107,10 +107,12 @@ class HabitCreationViewController: UIViewController {
   }
   
   @IBAction private func createButtonTapped() {
-    guard !(habitNameTextField.text ?? "").isEmpty else {
+    guard let habitName = habitNameTextField.text, !habitName.isEmpty else {
       habitNameTextField.shake()
       return
     }
+    
+    viewModel.saveHabit(name: habitName)
     dismissViewController()
   }
   
