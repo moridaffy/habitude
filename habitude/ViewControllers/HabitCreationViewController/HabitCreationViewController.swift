@@ -123,11 +123,18 @@ class HabitCreationViewController: UIViewController {
     
     viewModel.saveHabit(name: habitName)
     delegate?.didCreateNewHabit()
-    dismissViewController()
+    showSuccessAlert()
   }
   
   @objc private func closeButtonTapped() {
     dismissViewController()
+  }
+  
+  private func showSuccessAlert() {
+    let okAction = UIAlertAction(title: "Ok", style: .default) { [weak self] (_) in
+      self?.dismissViewController()
+    }
+    showAlert(title: "Done", body: "Your habit was successfully created!", button: nil, actions: [okAction])
   }
   
   private func dismissViewController() {

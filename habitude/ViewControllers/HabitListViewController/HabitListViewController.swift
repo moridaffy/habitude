@@ -110,18 +110,21 @@ class HabitListViewController: UIViewController {
       present(navigationController, animated: true, completion: nil)
     }
   }
+  
+  private func tryToActivateHabit(_ habit: Habit) {
+    guard viewModel.canActivateHabit(habit) else { return }
+    HabitHelper.activateHabit(habit: habit)
+  }
 }
 
 // MARK: - HabitListCollectionViewCellDelegate implementation
 
 extension HabitListViewController: HabitListCollectionViewCellDelegate {
   func didActivateHabit(_ habit: Habit) {
-    // TODO
-    print("Did activate \(habit.name)")
+    tryToActivateHabit(habit)
   }
   
   func didTapDetailsButton(for habit: Habit) {
-    // TODO
     print("Did tap details for \(habit.name)")
   }
 }

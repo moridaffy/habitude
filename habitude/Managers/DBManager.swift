@@ -41,4 +41,23 @@ class DBManager {
   func getHabit(id: String) -> Habit? {
     return getHabits().first(where: { $0.id == id })
   }
+  
+  func updateHabit(habit: Habit, streakCount: Int? = nil, activationDate: String? = nil) {
+    dbQueue.sync {
+      do {
+        let realm = try Realm()
+        try realm.write {
+          if let streakCount = streakCount {
+            habit.streakCount = streakCount
+          }
+          if let activationDate = activationDate {
+            habit.latestActivationDate = activationDate
+          }
+          try realm.commitWrite()
+        }
+      } catch let error {
+        fatalError("🔥 Error at DBManager (updateHabit): \(error.localizedDescription)")
+      }
+    }
+  }
 }

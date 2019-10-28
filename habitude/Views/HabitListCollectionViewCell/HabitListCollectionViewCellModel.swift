@@ -13,5 +13,4 @@ class HabitListCollectionViewCellModel {
   init(habit: Habit) {
     self.habit = habit
   }
-  
 }

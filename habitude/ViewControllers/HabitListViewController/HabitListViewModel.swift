@@ -19,4 +19,8 @@ class HabitListViewModel {
   func reloadHabits() {
     self.habits.value = DBManager.shared.getHabits()
   }
+  
+  func canActivateHabit(_ habit: Habit) -> Bool {
+    return !HabitHelper.checkIfActivatedToday(habit: habit)
+  }
 }

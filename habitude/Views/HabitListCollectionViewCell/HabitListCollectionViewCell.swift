@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxRealm
 
 protocol HabitListCollectionViewCellDelegate: class {
   func didActivateHabit(_ habit: Habit)
@@ -22,6 +24,7 @@ class HabitListCollectionViewCell: UICollectionViewCell {
   @IBOutlet private weak var iconImageView: UIImageView!
   @IBOutlet private weak var titleLabel: UILabel!
   
+  private let disposeBag = DisposeBag()
   private var viewModel: HabitListCollectionViewCellModel!
   private weak var delegate: HabitListCollectionViewCellDelegate?
   private weak var longPressRecognizer: UILongPressGestureRecognizer?
@@ -33,6 +36,7 @@ class HabitListCollectionViewCell: UICollectionViewCell {
     setupContainerView()
     setupHabit()
     setupActions()
+    setupReactive()
   }
   
   private func setupContainerView() {
@@ -48,13 +52,18 @@ class HabitListCollectionViewCell: UICollectionViewCell {
   }
   
   private func setupHabit() {
-    // TODO
-    // counterLabel.text = ???
     counterLabel.textColor = UIColor.white
     titleLabel.text = viewModel.habit.name
     titleLabel.textColor = UIColor.white
     iconImageView.image = viewModel.habit.icon
     iconImageView.tintColor = UIColor.white
+  }
+  
+  private func setupReactive() {
+    Observable.from(object: viewModel.habit)
+      .compactMap({ "\($0.streakCount)" })
+      .bind(to: counterLabel.rx.text)
+      .disposed(by: disposeBag)
   }
   
   private func setupActions() {

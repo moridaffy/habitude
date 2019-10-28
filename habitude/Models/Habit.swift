@@ -13,6 +13,8 @@ import UIKit
 class Habit: Object {
   @objc dynamic var id: String = ""
   @objc dynamic var name: String = ""
+  @objc dynamic var streakCount: Int = 0
+  @objc dynamic var latestActivationDate: String = ""
   @objc private dynamic var iconCode: String = ""
   @objc private dynamic var colorCode: String = ""
   
