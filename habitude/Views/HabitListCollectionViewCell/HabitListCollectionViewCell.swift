@@ -42,12 +42,13 @@ class HabitListCollectionViewCell: UICollectionViewCell {
   private func setupContainerView() {
     shadowView.backgroundColor = UIColor.clear
     shadowView.layer.shadowColor = viewModel.habit.color.cgColor
-    shadowView.layer.shadowOpacity = 1.0
+//    shadowView.layer.shadowOpacity = 1.0
     shadowView.layer.shadowRadius = 3.0
     shadowView.layer.shadowOffset = CGSize.zero
     shadowView.layer.masksToBounds = false
     containerView.layer.cornerRadius = 10.0
     containerView.layer.masksToBounds = true
+    containerView.layer.borderColor = viewModel.habit.color.cgColor
     containerView.backgroundColor = viewModel.habit.color
   }
   
@@ -61,9 +62,11 @@ class HabitListCollectionViewCell: UICollectionViewCell {
   
   private func setupReactive() {
     Observable.from(object: viewModel.habit)
-      .compactMap({ "\($0.streakCount)" })
-      .bind(to: counterLabel.rx.text)
-      .disposed(by: disposeBag)
+      .subscribe { [weak self] (event) in
+        guard let habit = event.element else { return }
+        self?.counterLabel.text = "\(habit.streakCount)"
+        self?.updateActivatedState(activated: HabitHelper.checkIfActivatedToday(habit: habit))
+    }.disposed(by: disposeBag)
   }
   
   private func setupActions() {
@@ -77,6 +80,17 @@ class HabitListCollectionViewCell: UICollectionViewCell {
     longPressRecognizer.minimumPressDuration = 1.0
     containerView.addGestureRecognizer(longPressRecognizer)
     self.longPressRecognizer = longPressRecognizer
+  }
+  
+  private func updateActivatedState(activated: Bool) {
+    guard activated != viewModel.activated else { return }
+    UIView.animate(withDuration: 0.3, animations: { [weak self] in
+      self?.containerView.backgroundColor = self?.viewModel.habit.color.withAlphaComponent(activated ? 1.0 : 0.5)
+      self?.containerView.layer.borderWidth = activated ? 0.0 : 6.0
+      self?.shadowView.layer.shadowOpacity = activated ? 1.0 : 0.0
+    }, completion: { [weak self] _ in
+      self?.viewModel.activated = activated
+    })
   }
   
   @objc private func didTapDetailsButton() {

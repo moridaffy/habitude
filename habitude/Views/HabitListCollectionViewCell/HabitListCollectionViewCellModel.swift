@@ -9,6 +9,7 @@
 class HabitListCollectionViewCellModel {
   
   let habit: Habit
+  var activated: Bool?
   
   init(habit: Habit) {
     self.habit = habit
