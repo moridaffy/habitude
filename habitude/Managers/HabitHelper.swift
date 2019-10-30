@@ -24,5 +24,4 @@ class HabitHelper {
     let activationDate = DateHelper.getString(from: Date(), format: .full)
     DBManager.shared.updateHabit(habit: habit, streakCount: streakCount, activationDate: activationDate)
   }
-  
 }

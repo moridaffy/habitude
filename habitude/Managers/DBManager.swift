@@ -29,6 +29,20 @@ class DBManager {
     }
   }
   
+  func deleteHabit(_ habit: Habit) {
+    dbQueue.sync {
+      do {
+        let realm = try Realm()
+        try realm.write {
+          realm.delete(habit)
+          try realm.commitWrite()
+        }
+      } catch let error {
+        fatalError("🔥 Error at DBManager (deleteHabit): \(error.localizedDescription)")
+      }
+    }
+  }
+  
   func getHabits() -> [Habit] {
     do {
       let realm = try Realm()

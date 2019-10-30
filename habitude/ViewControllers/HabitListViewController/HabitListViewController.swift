@@ -112,8 +112,22 @@ class HabitListViewController: UIViewController {
   }
   
   private func tryToActivateHabit(_ habit: Habit) {
-    guard viewModel.canActivateHabit(habit) else { return }
-    HabitHelper.activateHabit(habit: habit)
+    if viewModel.canActivateHabit(habit) {
+      HabitHelper.activateHabit(habit: habit)
+    } else {
+      showAlertError(error: nil, desc: "Looks like habit has already been activated today! Come back tomorrow!", critical: false)
+    }
+  }
+  
+  private func showHabitDetailsAlert(_ habit: Habit) {
+    let deleteAction = UIAlertAction(title: "Delete habit", style: .destructive) { (_) in
+      DBManager.shared.deleteHabit(habit)
+      self.viewModel.reloadHabits()
+    }
+    let activateAction = UIAlertAction(title: "Activate", style: .default) { (_) in
+      self.tryToActivateHabit(habit)
+    }
+    showAlert(title: habit.name, body: "What do you want to do with selected habit?", button: "Cancel", actions: [deleteAction, activateAction])
   }
 }
 
@@ -125,7 +139,7 @@ extension HabitListViewController: HabitListCollectionViewCellDelegate {
   }
   
   func didTapDetailsButton(for habit: Habit) {
-    print("Did tap details for \(habit.name)")
+    showHabitDetailsAlert(habit)
   }
 }
 
