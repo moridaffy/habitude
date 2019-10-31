@@ -65,7 +65,7 @@ class HabitListCollectionViewCell: UICollectionViewCell {
       .subscribe { [weak self] (event) in
         guard let habit = event.element else { return }
         self?.counterLabel.text = "\(habit.streakCount)"
-        self?.updateActivatedState(activated: HabitHelper.checkIfActivatedToday(habit: habit))
+        self?.updateActivatedState(activated: HabitHelper.shared.checkIfActivatedToday(habit: habit))
     }.disposed(by: disposeBag)
   }
   

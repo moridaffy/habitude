@@ -113,7 +113,7 @@ class HabitListViewController: UIViewController {
   
   private func tryToActivateHabit(_ habit: Habit) {
     if viewModel.canActivateHabit(habit) {
-      HabitHelper.activateHabit(habit: habit)
+      HabitHelper.shared.activateHabit(habit: habit)
     } else {
       showAlertError(error: nil, desc: "Looks like habit has already been activated today! Come back tomorrow!", critical: false)
     }

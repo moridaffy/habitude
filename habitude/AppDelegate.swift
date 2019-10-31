@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+    HabitHelper.shared.updateStreakCount()
+    
     print("🔥 \(NSHomeDirectory())")
     
     return true

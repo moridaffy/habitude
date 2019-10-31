@@ -21,6 +21,6 @@ class HabitListViewModel {
   }
   
   func canActivateHabit(_ habit: Habit) -> Bool {
-    return !HabitHelper.checkIfActivatedToday(habit: habit)
+    return !HabitHelper.shared.checkIfActivatedToday(habit: habit)
   }
 }

@@ -10,7 +10,18 @@ import Foundation
 
 class HabitHelper {
   
-  static func checkIfActivatedToday(habit: Habit) -> Bool {
+  static let shared = HabitHelper()
+  
+  func updateStreakCount() {
+    let habits = DBManager.shared.getHabits()
+    for habit in habits where !checkIfActivatedToday(habit: habit) {
+      if checkIfActivatedYesterday(habit: habit) {
+        DBManager.shared.updateHabit(habit: habit, streakCount: 0, activationDate: "")
+      }
+    }
+  }
+  
+  func checkIfActivatedToday(habit: Habit) -> Bool {
     guard let activationDate = DateHelper.getDate(from: habit.latestActivationDate, format: .full) else { return false }
     let calendar = Calendar.current
     
@@ -19,7 +30,16 @@ class HabitHelper {
     return currentDay == activationDay
   }
   
-  static func activateHabit(habit: Habit) {
+  func checkIfActivatedYesterday(habit: Habit) -> Bool {
+    guard let activationDate = DateHelper.getDate(from: habit.latestActivationDate, format: .full) else { return false }
+    let calendar = Calendar.current
+    
+    let activationDay = calendar.ordinality(of: .day, in: .year, for: activationDate)
+    let yesterdayDay = calendar.ordinality(of: .day, in: .year, for: Date().addingTimeInterval(-1 * 60 * 60 * 24))
+    return activationDay == yesterdayDay
+  }
+  
+  func activateHabit(habit: Habit) {
     let streakCount = habit.streakCount + 1
     let activationDate = DateHelper.getString(from: Date(), format: .full)
     DBManager.shared.updateHabit(habit: habit, streakCount: streakCount, activationDate: activationDate)
