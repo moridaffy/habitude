@@ -71,8 +71,9 @@ class HabitCreationViewController: UIViewController {
     
     viewModel.selectedHabitIcon.asObservable()
       .subscribe { [weak self] (event) in
-        guard let icon = event.element?.icon?.withRenderingMode(.alwaysTemplate) else { return }
-        self?.habitPreviewIconImageView.image = icon
+        guard let icon = event.element else { return }
+        self?.habitPreviewIconImageView.image = icon.icon?.withRenderingMode(.alwaysTemplate)
+        self?.habitNameTextField.placeholder = icon.placeholder ?? "Eay healthy"
     }.disposed(by: disposeBag)
   }
   
@@ -84,7 +85,6 @@ class HabitCreationViewController: UIViewController {
     habitNameTextField.layer.masksToBounds = true
     habitNameTextField.font = UIFont.systemFont(ofSize: 22.0, weight: .semibold)
     habitNameTextField.textColor = UIColor.additionalGrayDark
-    habitNameTextField.placeholder = "Eat healthy"
     habitNameTextField.backgroundColor = UIColor.additionalGrayLight
   }
   
