@@ -27,19 +27,29 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8y-uq-e46">
+                                <rect key="frame" x="32" y="438" width="350" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="xeG-Y1-w3q" firstAttribute="top" secondItem="uUM-de-sGA" secondAttribute="top" id="11c-pV-CCt"/>
+                            <constraint firstItem="P8y-uq-e46" firstAttribute="leading" secondItem="xeG-Y1-w3q" secondAttribute="leading" constant="32" id="2z4-1E-q0e"/>
                             <constraint firstItem="xeG-Y1-w3q" firstAttribute="leading" secondItem="uUM-de-sGA" secondAttribute="leading" id="68V-Pe-2wz"/>
                             <constraint firstAttribute="bottom" secondItem="xeG-Y1-w3q" secondAttribute="bottom" id="FJE-Yg-vYi"/>
+                            <constraint firstItem="P8y-uq-e46" firstAttribute="centerY" secondItem="nA8-be-DFz" secondAttribute="centerY" id="ItC-zi-PcB"/>
                             <constraint firstItem="uUM-de-sGA" firstAttribute="trailing" secondItem="xeG-Y1-w3q" secondAttribute="trailing" id="TiK-Mv-zTu"/>
+                            <constraint firstItem="P8y-uq-e46" firstAttribute="trailing" secondItem="xeG-Y1-w3q" secondAttribute="trailing" constant="-32" id="z3a-Bi-cqT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uUM-de-sGA"/>
                     </view>
                     <navigationItem key="navigationItem" id="x16-0F-6gQ"/>
                     <connections>
                         <outlet property="collectionView" destination="xeG-Y1-w3q" id="nOK-PE-cPo"/>
+                        <outlet property="placeholderLabel" destination="P8y-uq-e46" id="2t1-Ka-gAx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehm-6l-cth" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

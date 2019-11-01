@@ -13,6 +13,7 @@ import RxDataSources
 class HabitListViewController: UIViewController {
   
   @IBOutlet private weak var collectionView: UICollectionView!
+  @IBOutlet private weak var placeholderLabel: UILabel!
   
   private let viewModel = HabitListViewModel()
   private let disposeBag = DisposeBag()
@@ -23,6 +24,7 @@ class HabitListViewController: UIViewController {
     super.viewDidLoad()
     setupNavigationBar()
     setupCollectionView()
+    setupPlaceholderLabel()
     setupReactive()
   }
   
@@ -48,12 +50,26 @@ class HabitListViewController: UIViewController {
     collectionView.register(UINib(nibName: "HabitListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HabitListCollectionViewCell")
   }
   
+  private func setupPlaceholderLabel() {
+    placeholderLabel.text = "Please, create a new habit using the + icon in the top right corner of the screen!"
+    placeholderLabel.textColor = UIColor.systemGray
+    placeholderLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
+//    placeholderLabel.isHidden = !viewModel.habits.value.isEmpty
+  }
+  
   private func setupReactive() {
     viewModel.habits.asObservable()
       .bind(to: collectionView.rx.items) { collectionView, row, habit in
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitListCollectionViewCell", for: IndexPath(row: row, section: 0)) as? HabitListCollectionViewCell else { fatalError() }
         cell.setup(habit: habit, delegate: self)
         return cell
+      }.disposed(by: disposeBag)
+    
+    viewModel.habits.asObservable()
+      .compactMap({ $0.isEmpty })
+      .subscribe { [weak self] (event) in
+        guard let displayPlaceholder = event.element else { return }
+        self?.displayPlaceholderLabel(displayPlaceholder)
       }.disposed(by: disposeBag)
   }
   
@@ -86,6 +102,10 @@ class HabitListViewController: UIViewController {
     layout.minimumLineSpacing = 0.0
     layout.minimumInteritemSpacing = 0.0
     return layout
+  }
+  
+  private func displayPlaceholderLabel(_ display: Bool) {
+    placeholderLabel.isHidden = !display
   }
   
   // MARK: - Actions
