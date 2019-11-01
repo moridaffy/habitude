@@ -54,7 +54,6 @@ class HabitListViewController: UIViewController {
     placeholderLabel.text = "Please, create a new habit using the + icon in the top right corner of the screen!"
     placeholderLabel.textColor = UIColor.systemGray
     placeholderLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
-//    placeholderLabel.isHidden = !viewModel.habits.value.isEmpty
   }
   
   private func setupReactive() {
