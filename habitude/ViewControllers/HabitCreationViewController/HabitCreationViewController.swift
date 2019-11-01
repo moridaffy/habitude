@@ -73,7 +73,7 @@ class HabitCreationViewController: UIViewController {
       .subscribe { [weak self] (event) in
         guard let icon = event.element else { return }
         self?.habitPreviewIconImageView.image = icon.icon?.withRenderingMode(.alwaysTemplate)
-        self?.habitNameTextField.placeholder = icon.placeholder ?? "Eay healthy"
+        self?.habitNameTextField.placeholder = icon.placeholder
     }.disposed(by: disposeBag)
   }
   
@@ -84,7 +84,7 @@ class HabitCreationViewController: UIViewController {
     habitNameTextField.layer.cornerRadius = 15.0
     habitNameTextField.layer.masksToBounds = true
     habitNameTextField.font = UIFont.systemFont(ofSize: 22.0, weight: .semibold)
-    habitNameTextField.textColor = UIColor.additionalGrayDark
+    habitNameTextField.textColor = UIColor.systemGray
     habitNameTextField.backgroundColor = UIColor.additionalGrayLight
   }
   
@@ -116,11 +116,7 @@ class HabitCreationViewController: UIViewController {
   }
   
   @IBAction private func createButtonTapped() {
-    guard let habitName = habitNameTextField.text, !habitName.isEmpty else {
-      habitNameTextField.shake()
-      return
-    }
-    
+    let habitName = viewModel.getHabitName(textFieldValue: habitNameTextField.text)
     viewModel.saveHabit(name: habitName)
     delegate?.didCreateNewHabit()
     showSuccessAlert()

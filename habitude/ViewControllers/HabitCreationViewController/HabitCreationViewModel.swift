@@ -24,8 +24,13 @@ class HabitCreationViewModel {
   }
   
   func getColorForIconPreview(at row: Int) -> HabitColor {
-    guard row >= colors.count else { return colors[row] }
-    return HabitColor(code: "CCCCCC")
+    guard row < colors.count else { return HabitColor(code: "CCCCCC") }
+    return colors[row]
+  }
+  
+  func getHabitName(textFieldValue: String?) -> String {
+    guard let textFieldValue = textFieldValue, !textFieldValue.isEmpty else { return selectedHabitIcon.value.placeholder }
+    return textFieldValue
   }
   
   func saveHabit(name: String) {

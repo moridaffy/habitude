@@ -15,11 +15,7 @@ extension UIColor {
   }
   
   static var additionalGrayLight: UIColor {
-    return UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0)
+    guard #available(iOS 13.0, *) else { return UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0) }
+    return UIColor.systemGray5
   }
-  
-  static var additionalGrayDark: UIColor {
-    return UIColor(red: 0.53, green: 0.53, blue: 0.53, alpha: 1.0)
-  }
-  
 }

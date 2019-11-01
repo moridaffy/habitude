@@ -62,7 +62,7 @@ class HabitListViewController: UIViewController {
     let button = UIButton()
     button.setTitle(nil, for: .normal)
     button.setImage(settingsButtonIcon, for: .normal)
-    button.tintColor = UIColor.black
+    button.tintColor = UIColor.systemGray
     button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
     return button
   }
@@ -72,7 +72,7 @@ class HabitListViewController: UIViewController {
     let button = UIButton()
     button.setTitle(nil, for: .normal)
     button.setImage(createButtonIcon, for: .normal)
-    button.tintColor = UIColor.black
+    button.tintColor = UIColor.systemGray
     button.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
     return button
   }

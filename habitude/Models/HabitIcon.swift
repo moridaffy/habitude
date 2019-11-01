@@ -11,7 +11,7 @@ import UIKit
 struct HabitIcon {
   let code: String
   var icon: UIImage? { return UIImage(named: code)?.withRenderingMode(.alwaysTemplate) }
-  var placeholder: String? {
+  var placeholder: String {
     switch code {
     case "icon_habit_water":
       return "Drink 1l of water"
@@ -46,7 +46,7 @@ struct HabitIcon {
     case "icon_habit_nocoffee":
       return "Don't drink coffee"
     default:
-      return nil
+      fatalError("Unknown icon code passed: \(code)")
     }
   }
   
