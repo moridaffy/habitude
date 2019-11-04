@@ -14,10 +14,8 @@ class HabitHelper {
   
   func updateStreakCount() {
     let habits = DBManager.shared.getHabits()
-    for habit in habits where !checkIfActivatedToday(habit: habit) {
-      if checkIfActivatedYesterday(habit: habit) {
-        DBManager.shared.updateHabit(habit: habit, streakCount: 0, activationDate: "")
-      }
+    for habit in habits where habit.streakCount > 0 && !habit.isActivatedToday && !habit.isActivatedYesterday {
+      DBManager.shared.updateHabit(habit: habit, streakCount: 0, activationDate: "")
     }
   }
   
@@ -42,6 +40,14 @@ class HabitHelper {
   func activateHabit(habit: Habit) {
     let streakCount = habit.streakCount + 1
     let activationDate = DateHelper.getString(from: Date(), format: .full)
+    DBManager.shared.updateHabit(habit: habit, streakCount: streakCount, activationDate: activationDate)
+  }
+  
+  func deactivateHabit(habit: Habit) {
+    let streakCount = habit.streakCount - 1
+    let calendar = Calendar.current
+    let yesterdayDate = calendar.date(byAdding: .day, value: -1, to: Date())!
+    let activationDate = DateHelper.getString(from: yesterdayDate, format: .full)
     DBManager.shared.updateHabit(habit: habit, streakCount: streakCount, activationDate: activationDate)
   }
 }

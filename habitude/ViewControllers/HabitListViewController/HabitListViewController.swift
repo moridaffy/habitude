@@ -131,22 +131,37 @@ class HabitListViewController: UIViewController {
   }
   
   private func tryToActivateHabit(_ habit: Habit) {
-    if viewModel.canActivateHabit(habit) {
-      HabitHelper.shared.activateHabit(habit: habit)
-    } else {
-      showAlertError(error: nil, desc: "Looks like habit has already been activated today! Come back tomorrow!", critical: false)
-    }
+    guard !habit.isActivatedToday else { return }
+    HabitHelper.shared.activateHabit(habit: habit)
+  }
+  
+  private func tryToDeactivateHabit(_ habit: Habit) {
+    guard habit.isActivatedToday else { return }
+    HabitHelper.shared.deactivateHabit(habit: habit)
   }
   
   private func showHabitDetailsAlert(_ habit: Habit) {
+    var actions: [UIAlertAction] = []
+    
     let deleteAction = UIAlertAction(title: "Delete habit", style: .destructive) { (_) in
       DBManager.shared.deleteHabit(habit)
       self.viewModel.reloadHabits()
     }
-    let activateAction = UIAlertAction(title: "Activate", style: .default) { (_) in
-      self.tryToActivateHabit(habit)
+    actions.append(deleteAction)
+    
+    if habit.isActivatedToday {
+      let deactivateAction = UIAlertAction(title: "Deactivate", style: .default) { (_) in
+        self.tryToDeactivateHabit(habit)
+      }
+      actions.append(deactivateAction)
+    } else {
+      let activateAction = UIAlertAction(title: "Activate", style: .default) { (_) in
+        self.tryToActivateHabit(habit)
+      }
+      actions.append(activateAction)
     }
-    showAlert(title: habit.name, body: "What do you want to do with selected habit?", button: "Cancel", actions: [deleteAction, activateAction])
+    
+    showAlert(title: habit.name, body: "What do you want to do with selected habit?", button: "Cancel", actions: actions)
   }
 }
 

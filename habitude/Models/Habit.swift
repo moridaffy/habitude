@@ -23,6 +23,8 @@ class Habit: Object {
   
   var color: UIColor { return habitColor.color }
   var icon: UIImage? { return habitIcon.icon }
+  var isActivatedToday: Bool { return HabitHelper.shared.checkIfActivatedToday(habit: self) }
+  var isActivatedYesterday: Bool { return HabitHelper.shared.checkIfActivatedYesterday(habit: self) }
   
   convenience init(name: String, icon: HabitIcon, color: HabitColor) {
     self.init()
