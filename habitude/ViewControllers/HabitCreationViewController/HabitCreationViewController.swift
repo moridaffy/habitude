@@ -17,9 +17,13 @@ class HabitCreationViewController: UIViewController {
   
   @IBOutlet private weak var habitPreviewContainerView: UIView!
   @IBOutlet private weak var habitPreviewIconImageView: UIImageView!
+  @IBOutlet private weak var habitNameLabel: UILabel!
   @IBOutlet private weak var habitNameTextField: UITextField!
+  @IBOutlet private weak var habitIconLabel: UILabel!
   @IBOutlet private weak var habitIconCollectionView: UICollectionView!
+  @IBOutlet private weak var habitColorLabel: UILabel!
   @IBOutlet private weak var habitColorCollectionView: UICollectionView!
+  @IBOutlet private weak var instructionsLabel: UILabel!
   @IBOutlet private weak var createButton: UIButton!
   @IBOutlet private weak var createButtonBottomConstraint: NSLayoutConstraint!
   
@@ -33,6 +37,7 @@ class HabitCreationViewController: UIViewController {
     setupNameTextField()
     setupIconCollectionView()
     setupColorCollectionView()
+    setupLabels()
     setupCreateButton()
     if #available(iOS 13.0, *) { } else {
       setupNavigationBar()
@@ -104,6 +109,18 @@ class HabitCreationViewController: UIViewController {
     habitColorCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
     habitColorCollectionView.delegate = self
     habitColorCollectionView.dataSource = self
+  }
+  
+  private func setupLabels() {
+    for label in [habitNameLabel, habitIconLabel, habitColorLabel, instructionsLabel] {
+      label?.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
+      label?.textColor = UIColor.systemGray
+    }
+    
+    habitNameLabel.text = "Habit's name"
+    habitIconLabel.text = "Habit's icon"
+    habitColorLabel.text = "Habit's color"
+    instructionsLabel.text = "Choose an icon and color for a new habit, enter its name (or use a template) and click the \"create\" button"
   }
   
   private func setupCreateButton() {
