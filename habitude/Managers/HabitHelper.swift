@@ -14,40 +14,50 @@ class HabitHelper {
   
   func updateStreakCount() {
     let habits = DBManager.shared.getHabits()
-    for habit in habits where habit.streakCount > 0 && !habit.isActivatedToday && !habit.isActivatedYesterday {
-      DBManager.shared.updateHabit(habit: habit, streakCount: 0, activationDate: "")
+    for habit in habits {
+      switch habit.type {
+      case .positive:
+        updatePositiveHabit(habit)
+      case .negative:
+        updateNegativeHabit(habit)
+      }
+//      habit.updateStreakCount()
     }
   }
   
   func checkIfActivatedToday(habit: Habit) -> Bool {
-    guard let activationDate = DateHelper.getDate(from: habit.latestActivationDate, format: .full) else { return false }
-    let calendar = Calendar.current
-    
-    let activationDay = calendar.ordinality(of: .day, in: .year, for: activationDate)
-    let currentDay = calendar.ordinality(of: .day, in: .year, for: Date())
-    return currentDay == activationDay
+    return habit.sortedActivations.first?.isToday ?? false
   }
   
   func checkIfActivatedYesterday(habit: Habit) -> Bool {
-    guard let activationDate = DateHelper.getDate(from: habit.latestActivationDate, format: .full) else { return false }
-    let calendar = Calendar.current
+    let todayDay = DateHelper.getGlobalDay()
+    let yesterdayDay = todayDay - 1
+    return yesterdayDay == habit.sortedActivations.first?.globalDay
+  }
+  
+  
+  /// Activate habit or cancel it's activation
+  /// - Parameter habit: selected habit
+  /// - Parameter activate: if false -> will try to delete today's activation of passed habit
+  func activateHabit(habit: Habit, activate: Bool = true) {
+    let day = DateHelper.getDay()
+    let year = DateHelper.getYear()
     
-    let activationDay = calendar.ordinality(of: .day, in: .year, for: activationDate)
-    let yesterdayDay = calendar.ordinality(of: .day, in: .year, for: Date().addingTimeInterval(-1 * 60 * 60 * 24))
-    return activationDay == yesterdayDay
+    if activate {
+      let activation = HabitActivation(habitId: habit.id, year: year, day: day)
+      DBManager.shared.updateHabit(habit: habit, activationToSave: activation)
+    } else {
+      let activation = HabitActivation(habitId: habit.id, year: year, day: day)
+      DBManager.shared.updateHabit(habit: habit, activationToDelete: activation)
+    }
   }
   
-  func activateHabit(habit: Habit) {
-    let streakCount = habit.streakCount + 1
-    let activationDate = DateHelper.getString(from: Date(), format: .full)
-    DBManager.shared.updateHabit(habit: habit, streakCount: streakCount, activationDate: activationDate)
+  private func updatePositiveHabit(_ habit: Habit) {
+    
   }
   
-  func deactivateHabit(habit: Habit) {
-    let streakCount = habit.streakCount - 1
-    let calendar = Calendar.current
-    let yesterdayDate = calendar.date(byAdding: .day, value: -1, to: Date())!
-    let activationDate = DateHelper.getString(from: yesterdayDate, format: .full)
-    DBManager.shared.updateHabit(habit: habit, streakCount: streakCount, activationDate: activationDate)
+  private func updateNegativeHabit(_ habit: Habit) {
+    guard !habit.activations.contains(where: { $0.automatic || $0.isToday }) else { return }
+    activateHabit(habit: habit)
   }
 }

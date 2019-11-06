@@ -17,6 +17,7 @@
 		0C22433423538F46002474CD /* HabitCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C22433323538F46002474CD /* HabitCreationViewModel.swift */; };
 		0C22433723538F5E002474CD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C22433623538F5E002474CD /* SettingsViewController.swift */; };
 		0C22433923538F7F002474CD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C22433823538F7F002474CD /* SettingsViewModel.swift */; };
+		0C398D3E2371924B0061C4E8 /* HabitActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C398D3D2371924B0061C4E8 /* HabitActivation.swift */; };
 		0C5F44B623641FC7004604EA /* HabitCreationColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5F44B423641FC7004604EA /* HabitCreationColorCollectionViewCell.swift */; };
 		0C5F44B723641FC7004604EA /* HabitCreationColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5F44B523641FC7004604EA /* HabitCreationColorCollectionViewCell.xib */; };
 		0C5F44B923641FD8004604EA /* HabitCreationColorCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5F44B823641FD8004604EA /* HabitCreationColorCollectionViewCellModel.swift */; };
@@ -56,6 +57,7 @@
 		0C22433323538F46002474CD /* HabitCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreationViewModel.swift; sourceTree = "<group>"; };
 		0C22433623538F5E002474CD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0C22433823538F7F002474CD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		0C398D3D2371924B0061C4E8 /* HabitActivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitActivation.swift; sourceTree = "<group>"; };
 		0C5F44B423641FC7004604EA /* HabitCreationColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreationColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C5F44B523641FC7004604EA /* HabitCreationColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitCreationColorCollectionViewCell.xib; sourceTree = "<group>"; };
 		0C5F44B823641FD8004604EA /* HabitCreationColorCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreationColorCollectionViewCellModel.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				0CB7DA2B2356432200D93033 /* Habit.swift */,
+				0C398D3D2371924B0061C4E8 /* HabitActivation.swift */,
 				0CB7DA2D2356445E00D93033 /* HabitIcon.swift */,
 				0CB7DA2F235644B100D93033 /* HabitColor.swift */,
 			);
@@ -330,6 +333,7 @@
 				0C22432D23538ECD002474CD /* HabitListViewController.swift in Sources */,
 				0C96151D2366C4900038C48D /* HabitHelper.swift in Sources */,
 				0CB7DA2E2356445E00D93033 /* HabitIcon.swift in Sources */,
+				0C398D3E2371924B0061C4E8 /* HabitActivation.swift in Sources */,
 				0C9615182366BF990038C48D /* DateHelper.swift in Sources */,
 				0C22433423538F46002474CD /* HabitCreationViewModel.swift in Sources */,
 				0CB7DA2C2356432200D93033 /* Habit.swift in Sources */,

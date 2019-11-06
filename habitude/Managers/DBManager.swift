@@ -52,20 +52,52 @@ class DBManager {
     }
   }
   
-  func getHabit(id: String) -> Habit? {
-    return getHabits().first(where: { $0.id == id })
-  }
-  
-  func updateHabit(habit: Habit, streakCount: Int? = nil, activationDate: String? = nil) {
+  func updateHabit(habit: Habit, activations: [HabitActivation] = []) {
     dbQueue.sync {
       do {
         let realm = try Realm()
         try realm.write {
-          if let streakCount = streakCount {
-            habit.streakCount = streakCount
+          if !activations.isEmpty {
+            habit.activations.removeAll()
+            habit.activations.append(objectsIn: activations)
           }
-          if let activationDate = activationDate {
-            habit.latestActivationDate = activationDate
+          try realm.commitWrite()
+        }
+      } catch let error {
+        fatalError("🔥 Error at DBManager (updateHabit): \(error.localizedDescription)")
+      }
+    }
+  }
+  
+  func addHabitActivation(_ activation: HabitActivation) {
+    dbQueue.sync {
+      do {
+        let realm = try Realm()
+        guard let habit = realm.object(ofType: Habit.self, forPrimaryKey: activation.habitId),
+          !habit.activations.contains(where: { $0.id == activation.id }) else { return }
+        
+        try realm.write {
+          habit.activations.append(activation)
+          try realm.commitWrite()
+        }
+      } catch let error {
+        fatalError("🔥 Error at DBManager (addHabitActivation): \(error.localizedDescription)")
+      }
+    }
+  }
+  
+  func updateHabit(habit: Habit, activationToSave: HabitActivation? = nil, activationToDelete: HabitActivation? = nil) {
+    dbQueue.sync {
+      do {
+        let realm = try Realm()
+        try realm.write {
+          if let activationToSave = activationToSave, !habit.activations.contains(where: { $0.id == activationToSave.id }) {
+            habit.activations.append(activationToSave)
+          }
+          if let activationToDelete = activationToDelete, let index = habit.activations.firstIndex(where: { $0.id == activationToDelete.id }) {
+            let activationToDelete = habit.activations[index]
+            habit.activations.remove(at: index)
+            realm.delete(activationToDelete)
           }
           try realm.commitWrite()
         }

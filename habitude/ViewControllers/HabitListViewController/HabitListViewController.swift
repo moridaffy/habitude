@@ -137,7 +137,7 @@ class HabitListViewController: UIViewController {
   
   private func tryToDeactivateHabit(_ habit: Habit) {
     guard habit.isActivatedToday else { return }
-    HabitHelper.shared.deactivateHabit(habit: habit)
+    HabitHelper.shared.activateHabit(habit: habit, activate: false)
   }
   
   private func showHabitDetailsAlert(_ habit: Habit) {
