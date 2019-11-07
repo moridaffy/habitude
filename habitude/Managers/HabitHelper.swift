@@ -12,52 +12,51 @@ class HabitHelper {
   
   static let shared = HabitHelper()
   
-  func updateStreakCount() {
-    let habits = DBManager.shared.getHabits()
-    for habit in habits {
-      switch habit.type {
-      case .positive:
-        updatePositiveHabit(habit)
-      case .negative:
-        updateNegativeHabit(habit)
-      }
-//      habit.updateStreakCount()
-    }
+  func configure() {
+    updateNegativeHabits()
+    deleteInactiveActivations()
   }
   
   func checkIfActivatedToday(habit: Habit) -> Bool {
-    return habit.sortedActivations.first?.isToday ?? false
+    return habit.sortedActivations.filter({ $0.isActive }).first?.isToday ?? false
   }
-  
-  func checkIfActivatedYesterday(habit: Habit) -> Bool {
-    let todayDay = DateHelper.getGlobalDay()
-    let yesterdayDay = todayDay - 1
-    return yesterdayDay == habit.sortedActivations.first?.globalDay
-  }
-  
   
   /// Activate habit or cancel it's activation
   /// - Parameter habit: selected habit
   /// - Parameter activate: if false -> will try to delete today's activation of passed habit
   func activateHabit(habit: Habit, activate: Bool = true) {
-    let day = DateHelper.getDay()
-    let year = DateHelper.getYear()
-    
     if activate {
-      let activation = HabitActivation(habitId: habit.id, year: year, day: day)
+      let activation = HabitActivation(habitId: habit.id, date: Date())
       DBManager.shared.updateHabit(habit: habit, activationToSave: activation)
     } else {
-      let activation = HabitActivation(habitId: habit.id, year: year, day: day)
+      let activation = HabitActivation(habitId: habit.id, date: Date())
       DBManager.shared.updateHabit(habit: habit, activationToDelete: activation)
     }
   }
   
-  private func updatePositiveHabit(_ habit: Habit) {
-    
+  private func updateNegativeHabits() {
+    let habits = DBManager.shared.getObjects(type: Habit.self, predicate: nil)
+    for habit in habits where habit.type == .negative {
+      if habit.activations.isEmpty {
+        automaticallyActivateNegativeHabit(habit)
+      } else if let activation = habit.sortedActivations.first {
+        if !activation.isToday {
+          automaticallyActivateNegativeHabit(habit)
+        }
+      }
+    }
   }
   
-  private func updateNegativeHabit(_ habit: Habit) {
-    guard !habit.activations.contains(where: { $0.automatic || $0.isToday }) else { return }
-    activateHabit(habit: habit)
+  private func automaticallyActivateNegativeHabit(_ habit: Habit) {
+    let activation = HabitActivation(habitId: habit.id, date: Date())
+    activation.isAutomatic = true
+    DBManager.shared.updateHabit(habit: habit, activationToSave: activation)
+  }
+  
+  private func deleteInactiveActivations() {
+    let activations = DBManager.shared.getObjects(type: HabitActivation.self, predicate: nil)
+    for activation in activations where !activation.isActive && !activation.isToday {
+      DBManager.shared.deleteActivation(activation)
+    }
   }
 }

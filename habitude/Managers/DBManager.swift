@@ -15,6 +15,32 @@ class DBManager {
   
   private let dbQueue = DispatchQueue(label: "ru.sportmaster.ios.driven.orzim.RealmQueue")
   
+  // MARK: - Generic functions
+  
+  func getObject<T: Object>(_ type: T.Type, forKey key: String) -> T? {
+    do {
+      let realm = try Realm()
+      return realm.object(ofType: T.self, forPrimaryKey: key)
+    } catch {
+      fatalError("🔥 Error at DBManager (getObject): \(error.localizedDescription)")
+    }
+  }
+  
+  func getObjects<T: Object>(type: T.Type, predicate: NSPredicate?) -> Results<T> {
+    do {
+      let realm = try Realm()
+      if let predicate = predicate {
+        return realm.objects(T.self).filter(predicate)
+      } else {
+        return realm.objects(T.self)
+      }
+    } catch {
+      fatalError("🔥 Error at DBManager (getObjects): \(error.localizedDescription)")
+    }
+  }
+  
+  // MARK: - Working with habits
+  
   func saveHabit(_ habit: Habit) {
     dbQueue.sync {
       do {
@@ -43,66 +69,51 @@ class DBManager {
     }
   }
   
-  func getHabits() -> [Habit] {
-    do {
-      let realm = try Realm()
-      return Array(realm.objects(Habit.self))
-    } catch let error {
-      fatalError("🔥 Error at DBManager (getAllHabits): \(error.localizedDescription)")
-    }
-  }
-  
-  func updateHabit(habit: Habit, activations: [HabitActivation] = []) {
-    dbQueue.sync {
-      do {
-        let realm = try Realm()
-        try realm.write {
-          if !activations.isEmpty {
-            habit.activations.removeAll()
-            habit.activations.append(objectsIn: activations)
-          }
-          try realm.commitWrite()
-        }
-      } catch let error {
-        fatalError("🔥 Error at DBManager (updateHabit): \(error.localizedDescription)")
-      }
-    }
-  }
-  
-  func addHabitActivation(_ activation: HabitActivation) {
-    dbQueue.sync {
-      do {
-        let realm = try Realm()
-        guard let habit = realm.object(ofType: Habit.self, forPrimaryKey: activation.habitId),
-          !habit.activations.contains(where: { $0.id == activation.id }) else { return }
-        
-        try realm.write {
-          habit.activations.append(activation)
-          try realm.commitWrite()
-        }
-      } catch let error {
-        fatalError("🔥 Error at DBManager (addHabitActivation): \(error.localizedDescription)")
-      }
-    }
-  }
-  
   func updateHabit(habit: Habit, activationToSave: HabitActivation? = nil, activationToDelete: HabitActivation? = nil) {
     dbQueue.sync {
       do {
         let realm = try Realm()
         try realm.write {
-          if let activationToSave = activationToSave, !habit.activations.contains(where: { $0.id == activationToSave.id }) {
-            habit.activations.append(activationToSave)
+          if let activationToSave = activationToSave {
+            if let existingActivation = habit.activations.first(where: { $0.id == activationToSave.id }) {
+              existingActivation.isActive = true
+            } else {
+              habit.activations.append(activationToSave)
+            }
           }
           if let activationToDelete = activationToDelete, let index = habit.activations.firstIndex(where: { $0.id == activationToDelete.id }) {
             let activationToDelete = habit.activations[index]
-            habit.activations.remove(at: index)
-            realm.delete(activationToDelete)
+            if activationToDelete.isAutomatic {
+              habit.activations[index].isActive = false
+            } else {
+              habit.activations.remove(at: index)
+              realm.delete(activationToDelete)
+            }
           }
           try realm.commitWrite()
         }
       } catch let error {
         fatalError("🔥 Error at DBManager (updateHabit): \(error.localizedDescription)")
+      }
+    }
+  }
+  
+  // MARK: - Working with activations
+  
+  func deleteActivation(_ activation: HabitActivation) {
+    dbQueue.sync {
+      do {
+        let realm = try Realm()
+        try realm.write {
+          if let habit = realm.object(ofType: Habit.self, forPrimaryKey: activation.habitId),
+            let activationIndex = habit.activations.firstIndex(where: { $0.id == activation.id }) {
+            habit.activations.remove(at: activationIndex)
+          }
+          realm.delete(activation)
+          try realm.commitWrite()
+        }
+      } catch let error {
+        fatalError("🔥 Error at DBManager (deleteActivation): \(error.localizedDescription)")
       }
     }
   }

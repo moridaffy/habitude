@@ -14,26 +14,25 @@ class HabitActivation: Object {
   @objc dynamic var habitId: String = ""
   @objc dynamic var year: Int = 0
   @objc dynamic var day: Int = 0
-  @objc dynamic var automatic: Bool = false
+  @objc dynamic var isAutomatic: Bool = false
+  @objc dynamic var isActive: Bool = true
   
   var globalDay: Int { return year * 365 + day }
   var isToday: Bool { return globalDay == DateHelper.getGlobalDay() }
   
-  convenience init(habitId: String, date: Date, automatic: Bool = false) {
+  convenience init(habitId: String, date: Date) {
     self.init()
     self.year = DateHelper.getYear(from: date)
     self.day = DateHelper.getDay(from: date)
     self.habitId = habitId
-    self.automatic = automatic
     self.id = HabitActivation.getId(habitId: habitId, year: year, day: day)
   }
   
-  convenience init(habitId: String, year: Int, day: Int, automatic: Bool = false) {
+  convenience init(habitId: String, year: Int, day: Int) {
     self.init()
     self.year = year
     self.day = day
     self.habitId = habitId
-    self.automatic = automatic
     self.id = HabitActivation.getId(habitId: habitId, year: year, day: day)
   }
   
@@ -50,6 +49,7 @@ class HabitActivation: Object {
   }
   
   func isConnectedTo(_ activation: HabitActivation) -> Bool {
+    guard isActive && activation.isActive else { return false }
     return isNextFor(activation) || isPreviousFor(activation)
   }
   

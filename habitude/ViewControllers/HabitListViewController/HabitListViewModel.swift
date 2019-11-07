@@ -17,6 +17,6 @@ class HabitListViewModel {
   }
   
   func reloadHabits() {
-    self.habits.value = DBManager.shared.getHabits()
+    self.habits.value = Array(DBManager.shared.getObjects(type: Habit.self, predicate: nil))
   }
 }
