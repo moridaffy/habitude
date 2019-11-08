@@ -61,13 +61,6 @@ class HabitListCollectionViewCell: UICollectionViewCell {
   }
   
   private func setupReactive() {
-//    Observable.from(object: viewModel.habit)
-//      .subscribe { [weak self] (event) in
-//        guard let habit = event.element else { return }
-//        self?.counterLabel.text = "\(habit.streakCount)"
-//        self?.updateActivatedState(activated: habit.isActivatedToday)
-//    }.disposed(by: disposeBag)
-    
     Observable.from(viewModel.habit.activations)
       .subscribe { [weak self] (event) in
         guard let activations = event.element else { return }
