@@ -44,6 +44,7 @@
 		0CB7DA362356474B00D93033 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA352356474B00D93033 /* DataManager.swift */; };
 		0CD747802376FCC400FA3A33 /* sound_deactivation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CD7477E2376FCC400FA3A33 /* sound_deactivation.mp3 */; };
 		0CD747812376FCC400FA3A33 /* sound_activation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CD7477F2376FCC400FA3A33 /* sound_activation.mp3 */; };
+		0CD747832376FD3B00FA3A33 /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD747822376FD3B00FA3A33 /* SoundHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		0CB7DA352356474B00D93033 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0CD7477E2376FCC400FA3A33 /* sound_deactivation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_deactivation.mp3; sourceTree = "<group>"; };
 		0CD7477F2376FCC400FA3A33 /* sound_activation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_activation.mp3; sourceTree = "<group>"; };
+		0CD747822376FD3B00FA3A33 /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				0C9615172366BF990038C48D /* DateHelper.swift */,
+				0CD747822376FD3B00FA3A33 /* SoundHelper.swift */,
 				0C96151C2366C4900038C48D /* HabitHelper.swift */,
 				0CB7DA352356474B00D93033 /* DataManager.swift */,
 				0C7BE7362365EFC20003AA19 /* DBManager.swift */,
@@ -355,6 +358,7 @@
 				0CB7DA2C2356432200D93033 /* Habit.swift in Sources */,
 				0CB7DA32235644E100D93033 /* UIColor+Hex.swift in Sources */,
 				0C662C3D2354510A00515DF8 /* HabitListCollectionViewCell.swift in Sources */,
+				0CD747832376FD3B00FA3A33 /* SoundHelper.swift in Sources */,
 				0C5F44C72364996C004604EA /* UIView+Shake.swift in Sources */,
 				0C5F44C3236490D4004604EA /* UITextField+Padding.swift in Sources */,
 				0C22433723538F5E002474CD /* SettingsViewController.swift in Sources */,

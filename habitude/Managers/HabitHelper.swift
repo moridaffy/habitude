@@ -27,9 +27,11 @@ class HabitHelper {
   func activateHabit(habit: Habit, activate: Bool = true) {
     if activate {
       let activation = HabitActivation(habitId: habit.id, date: Date())
+      SoundHelper.shared.playSound(.activation)
       DBManager.shared.updateHabit(habit: habit, activationToSave: activation)
     } else {
       let activation = HabitActivation(habitId: habit.id, date: Date())
+      SoundHelper.shared.playSound(.deactivation)
       DBManager.shared.updateHabit(habit: habit, activationToDelete: activation)
     }
   }
