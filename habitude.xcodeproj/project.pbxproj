@@ -42,6 +42,8 @@
 		0CB7DA30235644B100D93033 /* HabitColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA2F235644B100D93033 /* HabitColor.swift */; };
 		0CB7DA32235644E100D93033 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA31235644E100D93033 /* UIColor+Hex.swift */; };
 		0CB7DA362356474B00D93033 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB7DA352356474B00D93033 /* DataManager.swift */; };
+		0CD747802376FCC400FA3A33 /* sound_deactivation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CD7477E2376FCC400FA3A33 /* sound_deactivation.mp3 */; };
+		0CD747812376FCC400FA3A33 /* sound_activation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CD7477F2376FCC400FA3A33 /* sound_activation.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +81,8 @@
 		0CB7DA2F235644B100D93033 /* HabitColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitColor.swift; sourceTree = "<group>"; };
 		0CB7DA31235644E100D93033 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		0CB7DA352356474B00D93033 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		0CD7477E2376FCC400FA3A33 /* sound_deactivation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_deactivation.mp3; sourceTree = "<group>"; };
+		0CD7477F2376FCC400FA3A33 /* sound_activation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_activation.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 				0C22432523538E00002474CD /* Managers */,
 				0C22432623538E09002474CD /* Extensions */,
 				0C22432B23538EBC002474CD /* Models */,
+				0CD7477D2376FCB200FA3A33 /* Resources */,
 				0C1F24A923537B4C00533AF1 /* Assets.xcassets */,
 				0C1F24AB23537B4C00533AF1 /* LaunchScreen.storyboard */,
 				0C1F24AE23537B4C00533AF1 /* Info.plist */,
@@ -239,6 +244,15 @@
 			path = HabitListCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		0CD7477D2376FCB200FA3A33 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0CD7477F2376FCC400FA3A33 /* sound_activation.mp3 */,
+				0CD7477E2376FCC400FA3A33 /* sound_deactivation.mp3 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -310,6 +324,8 @@
 				0C22432823538E1D002474CD /* Root.storyboard in Resources */,
 				0C5F44BD23647C28004604EA /* HabitCreationIconCollectionViewCell.xib in Resources */,
 				0C1F24AD23537B4C00533AF1 /* LaunchScreen.storyboard in Resources */,
+				0CD747802376FCC400FA3A33 /* sound_deactivation.mp3 in Resources */,
+				0CD747812376FCC400FA3A33 /* sound_activation.mp3 in Resources */,
 				0C1F24AA23537B4C00533AF1 /* Assets.xcassets in Resources */,
 				0C5F44B723641FC7004604EA /* HabitCreationColorCollectionViewCell.xib in Resources */,
 				0C662C3E2354510A00515DF8 /* HabitListCollectionViewCell.xib in Resources */,
