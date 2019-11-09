@@ -150,7 +150,14 @@ class HabitCreationViewController: UIViewController {
   }
   
   @IBAction private func habitTypeButtonTapped() {
-    showAlert(title: "Types of habits", body: "There are two types: positive and negative.", button: "Ok", actions: [])
+    let body = """
+    There are two types of habits in this app: positive and negative.
+
+    Positive habits are regular habits which have to be completed everyday. For example, drink 1l of water, go to gym and so on.
+
+    Negative habits are habits, which are automatically activated in the start of your day and must be deactivated if you fail to restrict yourself from doing something. For example, don't smoke, don't drink milk and so on.
+    """
+    showAlert(title: "Types of habits", body: body, button: "Ok", actions: [])
   }
   
   @IBAction private func createButtonTapped() {
@@ -194,7 +201,6 @@ extension HabitCreationViewController: UICollectionViewDelegate, UICollectionVie
       viewModel.selectedHabitIcon.value = viewModel.icons[indexPath.row]
     case habitColorCollectionView:
       viewModel.selectedHabitColor.value = viewModel.colors[indexPath.row]
-      print("🔥 colorCode: \(viewModel.colors[indexPath.row].code)")
     default:
       break
     }
