@@ -33,9 +33,8 @@ class HabitCreationViewModel {
     return textFieldValue
   }
   
-  func saveHabit(name: String) {
-    let habit = Habit(name: name, icon: selectedHabitIcon.value, color: selectedHabitColor.value, type: .positive)
+  func saveHabit(name: String, type: Habit.HabitType) {
+    let habit = Habit(name: name, icon: selectedHabitIcon.value, color: selectedHabitColor.value, type: type)
     DBManager.shared.saveHabit(habit)
   }
-  
 }

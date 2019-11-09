@@ -42,7 +42,6 @@ class HabitListCollectionViewCell: UICollectionViewCell {
   private func setupContainerView() {
     shadowView.backgroundColor = UIColor.clear
     shadowView.layer.shadowColor = viewModel.habit.color.cgColor
-//    shadowView.layer.shadowOpacity = 1.0
     shadowView.layer.shadowRadius = 3.0
     shadowView.layer.shadowOffset = CGSize.zero
     shadowView.layer.masksToBounds = false

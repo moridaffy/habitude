@@ -23,6 +23,9 @@ class HabitCreationViewController: UIViewController {
   @IBOutlet private weak var habitIconCollectionView: UICollectionView!
   @IBOutlet private weak var habitColorLabel: UILabel!
   @IBOutlet private weak var habitColorCollectionView: UICollectionView!
+  @IBOutlet private weak var habitTypeLabel: UILabel!
+  @IBOutlet private weak var habitTypeSegmentSelector: UISegmentedControl!
+  @IBOutlet private weak var habitTypeButton: UIButton!
   @IBOutlet private weak var instructionsLabel: UILabel!
   @IBOutlet private weak var createButton: UIButton!
   @IBOutlet private weak var createButtonBottomConstraint: NSLayoutConstraint!
@@ -37,6 +40,7 @@ class HabitCreationViewController: UIViewController {
     setupNameTextField()
     setupIconCollectionView()
     setupColorCollectionView()
+    setupTypeSelection()
     setupLabels()
     setupCreateButton()
     if #available(iOS 13.0, *) { } else {
@@ -72,6 +76,7 @@ class HabitCreationViewController: UIViewController {
       .subscribe { [weak self] (event) in
         guard let color = event.element?.color else { return }
         self?.habitPreviewContainerView.backgroundColor = color
+        self?.habitTypeButton.tintColor = color
     }.disposed(by: disposeBag)
     
     viewModel.selectedHabitIcon.asObservable()
@@ -111,8 +116,19 @@ class HabitCreationViewController: UIViewController {
     habitColorCollectionView.dataSource = self
   }
   
+  private func setupTypeSelection() {
+    habitTypeSegmentSelector.removeAllSegments()
+    habitTypeSegmentSelector.insertSegment(withTitle: "Negative", at: 0, animated: false)
+    habitTypeSegmentSelector.insertSegment(withTitle: "Positive", at: 0, animated: false)
+    habitTypeSegmentSelector.selectedSegmentIndex = 0
+    
+    let habitTypeButtonIcon = #imageLiteral(resourceName: "icon_question_filled").withRenderingMode(.alwaysTemplate)
+    habitTypeButton.setTitle(nil, for: .normal)
+    habitTypeButton.setImage(habitTypeButtonIcon, for: .normal)
+  }
+  
   private func setupLabels() {
-    for label in [habitNameLabel, habitIconLabel, habitColorLabel, instructionsLabel] {
+    for label in [habitNameLabel, habitIconLabel, habitColorLabel, habitTypeLabel, instructionsLabel] {
       label?.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
       label?.textColor = UIColor.systemGray
     }
@@ -120,7 +136,8 @@ class HabitCreationViewController: UIViewController {
     habitNameLabel.text = "Habit's name"
     habitIconLabel.text = "Habit's icon"
     habitColorLabel.text = "Habit's color"
-    instructionsLabel.text = "Choose an icon and color for a new habit, enter its name (or use a template) and click the \"create\" button"
+    habitTypeLabel.text = "Habit's type"
+    instructionsLabel.text = "Choose an icon and color for a new habit, enter its name (or use a template), select its type and click the \"create\" button"
   }
   
   private func setupCreateButton() {
@@ -132,9 +149,13 @@ class HabitCreationViewController: UIViewController {
     createButton.titleLabel?.font = UIFont.systemFont(ofSize: 22.0, weight: .semibold)
   }
   
+  @IBAction private func habitTypeButtonTapped() {
+    showAlert(title: "Types of habits", body: "There are two types: positive and negative.", button: "Ok", actions: [])
+  }
+  
   @IBAction private func createButtonTapped() {
     let habitName = viewModel.getHabitName(textFieldValue: habitNameTextField.text)
-    viewModel.saveHabit(name: habitName)
+    viewModel.saveHabit(name: habitName, type: habitTypeSegmentSelector.selectedSegmentIndex == 0 ? .positive : .negative)
     delegate?.didCreateNewHabit()
     showSuccessAlert()
   }
