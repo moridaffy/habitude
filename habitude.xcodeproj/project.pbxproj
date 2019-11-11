@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C192BDA2379D36500D03E33 /* HabitudeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C192BD92379D36500D03E33 /* HabitudeCollectionViewCell.swift */; };
 		0C1F24A323537B4B00533AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F24A223537B4B00533AF1 /* AppDelegate.swift */; };
 		0C1F24AA23537B4C00533AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C1F24A923537B4C00533AF1 /* Assets.xcassets */; };
 		0C1F24AD23537B4C00533AF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C1F24AB23537B4C00533AF1 /* LaunchScreen.storyboard */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C192BD92379D36500D03E33 /* HabitudeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitudeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C1F249F23537B4B00533AF1 /* habitude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = habitude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C1F24A223537B4B00533AF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C1F24A923537B4C00533AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		0C22432423538DFA002474CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0C192BD92379D36500D03E33 /* HabitudeCollectionViewCell.swift */,
 				0C662C3A235450DE00515DF8 /* HabitListCollectionViewCell */,
 				0C5F44B223641F96004604EA /* HabitCreationHabitCollectionViewCell */,
 				0C5F44B323641FA6004604EA /* HabitCreationColorCollectionViewCell */,
@@ -354,6 +357,7 @@
 				0CB7DA2E2356445E00D93033 /* HabitIcon.swift in Sources */,
 				0C398D3E2371924B0061C4E8 /* HabitActivation.swift in Sources */,
 				0C9615182366BF990038C48D /* DateHelper.swift in Sources */,
+				0C192BDA2379D36500D03E33 /* HabitudeCollectionViewCell.swift in Sources */,
 				0C22433423538F46002474CD /* HabitCreationViewModel.swift in Sources */,
 				0CB7DA2C2356432200D93033 /* Habit.swift in Sources */,
 				0CB7DA32235644E100D93033 /* UIColor+Hex.swift in Sources */,

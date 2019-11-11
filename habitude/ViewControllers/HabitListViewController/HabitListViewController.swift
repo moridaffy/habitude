@@ -57,12 +57,12 @@ class HabitListViewController: UIViewController {
   }
   
   private func setupReactive() {
-    viewModel.habits.asObservable()
-      .bind(to: collectionView.rx.items) { collectionView, row, habit in
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitListCollectionViewCell", for: IndexPath(row: row, section: 0)) as? HabitListCollectionViewCell else { fatalError() }
-        cell.setup(habit: habit, delegate: self)
-        return cell
-      }.disposed(by: disposeBag)
+//    viewModel.habits.asObservable()
+//      .bind(to: collectionView.rx.items) { collectionView, row, habit in
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitListCollectionViewCell", for: IndexPath(row: row, section: 0)) as? HabitListCollectionViewCell else { fatalError() }
+//        cell.setup(habit: habit, delegate: self)
+//        return cell
+//      }.disposed(by: disposeBag)
     
     viewModel.habits.asObservable()
       .compactMap({ $0.isEmpty })

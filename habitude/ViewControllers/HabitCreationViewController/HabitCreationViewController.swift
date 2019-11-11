@@ -28,6 +28,7 @@ class HabitCreationViewController: UIViewController {
   @IBOutlet private weak var habitTypeButton: UIButton!
   @IBOutlet private weak var instructionsLabel: UILabel!
   @IBOutlet private weak var createButton: UIButton!
+  @IBOutlet private weak var createButtonHeightConstraint: NSLayoutConstraint!
   @IBOutlet private weak var createButtonBottomConstraint: NSLayoutConstraint!
   
   private let viewModel = HabitCreationViewModel()
@@ -42,10 +43,14 @@ class HabitCreationViewController: UIViewController {
     setupColorCollectionView()
     setupTypeSelection()
     setupLabels()
-    setupCreateButton()
     if #available(iOS 13.0, *) { } else {
       setupNavigationBar()
     }
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    setupCreateButton()
   }
   
   func setup(delegate: HabitCreationViewControllerDelegate) {
@@ -57,9 +62,9 @@ class HabitCreationViewController: UIViewController {
     let closeButton = UIButton()
     closeButton.setTitle(nil, for: .normal)
     closeButton.setImage(closeButtonIcon, for: .normal)
-    closeButton.tintColor = UIColor.black
+    closeButton.tintColor = UIColor.systemGray
     closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
-    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
     
     NSLayoutConstraint.activate([
       closeButton.widthAnchor.constraint(equalToConstant: 24.0),
@@ -68,7 +73,7 @@ class HabitCreationViewController: UIViewController {
   }
   
   private func setupHabitPreview() {
-    habitPreviewContainerView.layer.cornerRadius = 30.0
+    habitPreviewContainerView.layer.cornerRadius = HabitCreationIconCollectionViewCell.cellSize.height / 4.0
     habitPreviewContainerView.layer.masksToBounds = true
     habitPreviewIconImageView.tintColor = UIColor.white
     
@@ -141,12 +146,18 @@ class HabitCreationViewController: UIViewController {
   }
   
   private func setupCreateButton() {
-    createButton.layer.cornerRadius = createButton.frame.height / 2.0
-    createButton.layer.masksToBounds = true
+    guard !viewModel.createButtonConfigured else { return }
+    viewModel.createButtonConfigured = true
     createButton.backgroundColor = UIColor.additionalPink
     createButton.setTitleColor(UIColor.white, for: .normal)
     createButton.setTitle("Create".uppercased(), for: .normal)
     createButton.titleLabel?.font = UIFont.systemFont(ofSize: 22.0, weight: .semibold)
+    
+    let bottomInset = view.safeAreaInsets.bottom
+    guard bottomInset > 0.0 else { return }
+    createButtonBottomConstraint.constant = -bottomInset
+    createButtonHeightConstraint.constant = 50.0 + bottomInset
+    createButton.contentEdgeInsets.bottom = bottomInset
   }
   
   @IBAction private func habitTypeButtonTapped() {
@@ -187,9 +198,9 @@ extension HabitCreationViewController: UICollectionViewDelegate, UICollectionVie
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     switch collectionView {
     case habitIconCollectionView:
-      return CGSize(width: 100.0, height: 100.0)
+      return HabitCreationIconCollectionViewCell.cellSize
     case habitColorCollectionView:
-      return CGSize(width: 50.0, height: 50.0)
+      return HabitCreationColorCollectionViewCell.cellSize
     default:
       fatalError()
     }

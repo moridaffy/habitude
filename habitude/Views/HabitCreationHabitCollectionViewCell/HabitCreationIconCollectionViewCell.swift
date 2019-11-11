@@ -8,12 +8,14 @@
 
 import UIKit
 
-class HabitCreationIconCollectionViewCell: UICollectionViewCell {
+class HabitCreationIconCollectionViewCell: HabitudeCollectionViewCell {
   
   @IBOutlet private weak var iconView: UIView!
   @IBOutlet private weak var iconImageView: UIImageView!
   
   private var viewModel: HabitCreationIconCollectionViewCellModel!
+  
+  override class var cellSize: CGSize { return CGSize(width: 80.0, height: 80.0) }
   
   func setup(viewModel: HabitCreationIconCollectionViewCellModel) {
     self.viewModel = viewModel
@@ -23,7 +25,7 @@ class HabitCreationIconCollectionViewCell: UICollectionViewCell {
   private func setupUI() {
     backgroundColor = UIColor.clear
     iconView.backgroundColor = viewModel.color.color
-    iconView.layer.cornerRadius = 30.0
+    iconView.layer.cornerRadius = HabitCreationIconCollectionViewCell.cellSize.height / 4.0
     iconView.layer.masksToBounds = true
     iconImageView.image = viewModel.icon.icon
     iconImageView.tintColor = UIColor.white

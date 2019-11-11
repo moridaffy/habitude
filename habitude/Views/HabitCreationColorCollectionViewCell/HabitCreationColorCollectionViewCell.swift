@@ -8,11 +8,13 @@
 
 import UIKit
 
-class HabitCreationColorCollectionViewCell: UICollectionViewCell {
+class HabitCreationColorCollectionViewCell: HabitudeCollectionViewCell {
   
   @IBOutlet private weak var colorView: UIView!
   
   private var viewModel: HabitCreationColorCollectionViewCellModel!
+  
+  override class var cellSize: CGSize { return CGSize(width: 40.0, height: 40.0) }
   
   func setup(viewModel: HabitCreationColorCollectionViewCellModel) {
     self.viewModel = viewModel
@@ -22,7 +24,7 @@ class HabitCreationColorCollectionViewCell: UICollectionViewCell {
   private func setupUI() {
     backgroundColor = UIColor.clear
     colorView.backgroundColor = viewModel.color.color
-    colorView.layer.cornerRadius = colorView.frame.height / 2.0
+    colorView.layer.cornerRadius = (HabitCreationColorCollectionViewCell.cellSize.height - 8.0) / 2.0
     colorView.layer.masksToBounds = true
   }
 }

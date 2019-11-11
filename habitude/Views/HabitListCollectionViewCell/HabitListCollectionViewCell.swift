@@ -15,7 +15,7 @@ protocol HabitListCollectionViewCellDelegate: class {
   func didTapDetailsButton(for habit: Habit)
 }
 
-class HabitListCollectionViewCell: UICollectionViewCell {
+class HabitListCollectionViewCell: HabitudeCollectionViewCell {
   
   @IBOutlet private weak var shadowView: UIView!
   @IBOutlet private weak var containerView: UIView!

@@ -16,6 +16,8 @@ class HabitCreationViewModel {
   let selectedHabitIcon: Variable<HabitIcon>
   let selectedHabitColor: Variable<HabitColor>
   
+  var createButtonConfigured: Bool = false
+  
   init() {
     self.icons = DataManager.shared.getHabitIcons().shuffled()
     self.colors = DataManager.shared.getHabitColors().shuffled()
