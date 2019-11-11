@@ -62,7 +62,7 @@ class HabitCreationViewController: UIViewController {
     let closeButton = UIButton()
     closeButton.setTitle(nil, for: .normal)
     closeButton.setImage(closeButtonIcon, for: .normal)
-    closeButton.tintColor = UIColor.systemGray
+    closeButton.tintColor = UIColor.additionalRed
     closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
     
@@ -148,7 +148,7 @@ class HabitCreationViewController: UIViewController {
   private func setupCreateButton() {
     guard !viewModel.createButtonConfigured else { return }
     viewModel.createButtonConfigured = true
-    createButton.backgroundColor = UIColor.additionalPink
+    createButton.backgroundColor = UIColor.additionalRed
     createButton.setTitleColor(UIColor.white, for: .normal)
     createButton.setTitle("Create".uppercased(), for: .normal)
     createButton.titleLabel?.font = UIFont.systemFont(ofSize: 22.0, weight: .semibold)

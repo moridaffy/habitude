@@ -9,9 +9,8 @@
 import UIKit
 
 extension UIColor {
-  
-  static var additionalPink: UIColor {
-    return UIColor(red: 1.00, green: 0.25, blue: 0.31, alpha: 1.0)
+  static var additionalRed: UIColor {
+    return UIColor(red: 0.94, green: 0.22, blue: 0.25, alpha: 1.0)
   }
   
   static var additionalGrayLight: UIColor {
