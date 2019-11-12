@@ -19,6 +19,7 @@
 		0C22433723538F5E002474CD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C22433623538F5E002474CD /* SettingsViewController.swift */; };
 		0C22433923538F7F002474CD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C22433823538F7F002474CD /* SettingsViewModel.swift */; };
 		0C398D3E2371924B0061C4E8 /* HabitActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C398D3D2371924B0061C4E8 /* HabitActivation.swift */; };
+		0C5EF766237B303F00B93660 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C5EF768237B303F00B93660 /* Localizable.strings */; };
 		0C5F44B623641FC7004604EA /* HabitCreationColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5F44B423641FC7004604EA /* HabitCreationColorCollectionViewCell.swift */; };
 		0C5F44B723641FC7004604EA /* HabitCreationColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5F44B523641FC7004604EA /* HabitCreationColorCollectionViewCell.xib */; };
 		0C5F44B923641FD8004604EA /* HabitCreationColorCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5F44B823641FD8004604EA /* HabitCreationColorCollectionViewCellModel.swift */; };
@@ -64,6 +65,8 @@
 		0C22433623538F5E002474CD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0C22433823538F7F002474CD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		0C398D3D2371924B0061C4E8 /* HabitActivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitActivation.swift; sourceTree = "<group>"; };
+		0C5EF767237B303F00B93660 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0C5EF769237B305400B93660 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0C5F44B423641FC7004604EA /* HabitCreationColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreationColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C5F44B523641FC7004604EA /* HabitCreationColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitCreationColorCollectionViewCell.xib; sourceTree = "<group>"; };
 		0C5F44B823641FD8004604EA /* HabitCreationColorCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreationColorCollectionViewCellModel.swift; sourceTree = "<group>"; };
@@ -256,6 +259,7 @@
 		0CD7477D2376FCB200FA3A33 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0C5EF768237B303F00B93660 /* Localizable.strings */,
 				0CD7477F2376FCC400FA3A33 /* sound_activation.mp3 */,
 				0CD7477E2376FCC400FA3A33 /* sound_deactivation.mp3 */,
 			);
@@ -309,6 +313,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 0C1F249623537B4B00533AF1;
 			packageReferences = (
@@ -334,6 +339,7 @@
 				0C5F44BD23647C28004604EA /* HabitCreationIconCollectionViewCell.xib in Resources */,
 				0C1F24AD23537B4C00533AF1 /* LaunchScreen.storyboard in Resources */,
 				0CD747802376FCC400FA3A33 /* sound_deactivation.mp3 in Resources */,
+				0C5EF766237B303F00B93660 /* Localizable.strings in Resources */,
 				0CD747812376FCC400FA3A33 /* sound_activation.mp3 in Resources */,
 				0C1F24AA23537B4C00533AF1 /* Assets.xcassets in Resources */,
 				0C5F44B723641FC7004604EA /* HabitCreationColorCollectionViewCell.xib in Resources */,
@@ -391,6 +397,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		0C5EF768237B303F00B93660 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0C5EF767237B303F00B93660 /* en */,
+				0C5EF769237B305400B93660 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -398,6 +413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -459,6 +475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

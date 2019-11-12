@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  habitude
+
+  Created by Maxim Skryabin on 12.11.2019.
+  Copyright © 2019 MSKR. All rights reserved.
+*/
+
+"Please, create a new habit using the + icon in the top right corner of the screen!" = "Please, create a new habit using the + icon in the top right corner of the screen!";
+"What do you want to do with selected habit?" = "What do you want to do with selected habit?";
+
+"Delete habit" = "Delete habit";
+"Habit's name" = "Habit's name";
+"Habit's icon" = "Habit's icon";
+"Habit's color" = "Habit's color";
+"Habit's type" = "Habit's type";
+
+"Create" = "Create";
+"Deactivate" = "Deactivate";
+"Activate" = "Activate";
+"Types of habits" = "Types of habits";
+"Negative" = "Negative";
+"Positive" = "Positive";
+"Your habit was successfully created!" = "Your habit was successfully created!";
+
+"Done" = "Done";
+"Error" = "Error";
+"Error description" = "Error description";
+"An unknown error has occurred" = "An unknown error has occurred";
+"Done" = "Done";
+"Ok" = "Ок";
+
+"Theme" = "Theme";
+"Automatic" = "Automatic";
+"Dark" = "Dark";
+"Light" = "Light";
+
+"Amount of habits on app's icon" = "Amount of habits on app's icon";
+"Nonactivated" = "Nonactivated";
+"Activated" = "Activated";
+"None" = "None";
+
+"About" = "About";
+"Github repository" = "Github repository";
+"My website" = "My website";
+"Rate in App Store" = "Rate in App Store";
+
+"HabitCreationViewController.Instructions" = "Choose an icon and color for a new habit, enter its name (or use a template), select its type and click the \"Create\" button";
+"HabitCreationViewModel.HabitTypeAlertBodyText" = "There are two types of habits in this app: positive and negative.\n\nPositive habits are regular habits which have to be completed everyday. For example, drink 1l of water, go to gym and so on.\n\nNegative habits are habits, which are automatically activated in the start of your day and must be deactivated if you fail to restrict yourself from doing something. For example, don't smoke, don't drink milk and so on.";
+"SettingsViewController.ThemeChanged" = "Theme changed. Please, relaunch the app for the changes to take effect correctly.";
+"SettingsViewController.ErrorSettingBadge" = "Unable to set badge value. Please, check app's permissions in system settings app and try again";
+"SettingsViewModel.AboutAlertBodyText" = "Thank you for downloading my simple app for creating positive habits and getting rid of negative ones. I hope that you are already trying to upgrade to a better version of yourself with the help of Habitude.\n\nMy name is Maxim Skryabin, I'm an iOS developer of this and several other apps in the Apple App Store. You can check them out on my website (although it's fully in Russian at the moment). Please, feel free to contact me using my email, App Store reviews or my website.\n\nPS: This app is opensourced (v1.0) so it's source code can be downloaded from Github repository. It's nothing fancy so I don't know why would you even want to download or fork it, but you have an option to do so.\n\nPPS: If you found this app a tiny bit useful, please leave a review in the App Store, it really helps a lot :)";
+
+"Drink 1l of water" = "Drink 1l of water";
+"Clean your teeth" = "Clean your teeth";
+"Meditate" = "Meditate";
+"Don't eat junk food" = "Don't eat junk food";
+"Don't drink milk" = "Don't drink milk";
+"Read a book" = "Read a book";
+"Take pills" = "Take pills";
+"Wake up early" = "Wake up early";
+"Eat healthy food" = "Eat healthy food";
+"Play musical instrument" = "Play musical instrument";
+"Feed your dog" = "Feed your dog";
+"Feed your cat" = "Feed your cat";
+"Clean up" = "Clean up";
+"Don't drink alcohol" = "Don't drink alcohol";
+"Go to gym" = "Go to gym";
+"Don't drink coffee" = "Don't drink coffee";

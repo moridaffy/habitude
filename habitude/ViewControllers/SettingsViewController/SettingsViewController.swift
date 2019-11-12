@@ -61,12 +61,12 @@ class SettingsViewController: UIViewController {
     themeSegmentSelector.removeAllSegments()
     if #available(iOS 13.0, *) {
       themeSegmentSelector.selectedSegmentTintColor = UIColor.themableSecondaryBackground
-      themeSegmentSelector.insertSegment(withTitle: "Automatic", at: 0, animated: false)
+      themeSegmentSelector.insertSegment(withTitle: NSLocalizedString("Automatic", comment: ""), at: 0, animated: false)
     }
     themeSegmentSelector.tintColor = UIColor.additionalRed
     themeSegmentSelector.setTitleTextAttributes([.foregroundColor: UIColor.additionalRed], for: .normal)
-    themeSegmentSelector.insertSegment(withTitle: "Dark", at: 0, animated: false)
-    themeSegmentSelector.insertSegment(withTitle: "Light", at: 0, animated: false)
+    themeSegmentSelector.insertSegment(withTitle: NSLocalizedString("Dark", comment: ""), at: 0, animated: false)
+    themeSegmentSelector.insertSegment(withTitle: NSLocalizedString("Light", comment: ""), at: 0, animated: false)
     themeSegmentSelector.selectedSegmentIndex = viewModel.themeSelectedSegmentIndex
   }
   
@@ -77,9 +77,9 @@ class SettingsViewController: UIViewController {
     badgeSegmentSelector.tintColor = UIColor.additionalRed
     badgeSegmentSelector.setTitleTextAttributes([.foregroundColor: UIColor.additionalRed], for: .normal)
     badgeSegmentSelector.removeAllSegments()
-    badgeSegmentSelector.insertSegment(withTitle: "Nonactivated", at: 0, animated: false)
-    badgeSegmentSelector.insertSegment(withTitle: "Activated", at: 0, animated: false)
-    badgeSegmentSelector.insertSegment(withTitle: "None", at: 0, animated: false)
+    badgeSegmentSelector.insertSegment(withTitle: NSLocalizedString("Nonactivated", comment: ""), at: 0, animated: false)
+    badgeSegmentSelector.insertSegment(withTitle: NSLocalizedString("Activated", comment: ""), at: 0, animated: false)
+    badgeSegmentSelector.insertSegment(withTitle: NSLocalizedString("None", comment: ""), at: 0, animated: false)
     badgeSegmentSelector.selectedSegmentIndex = viewModel.badgeSelectedSegmentIndex
   }
   
@@ -89,8 +89,8 @@ class SettingsViewController: UIViewController {
       label?.textColor = UIColor.themableSecondaryTextColor
     }
     
-    themeLabel.text = "Theme"
-    badgeLabel.text = "Badge value"
+    themeLabel.text = NSLocalizedString("Theme", comment: "")
+    badgeLabel.text = NSLocalizedString("Amount of habits on app's icon", comment: "")
   }
   
   private func setupAboutButton() {
@@ -98,7 +98,7 @@ class SettingsViewController: UIViewController {
     viewModel.aboutButtonConfigured = true
     aboutButton.backgroundColor = UIColor.additionalRed
     aboutButton.setTitleColor(UIColor.white, for: .normal)
-    aboutButton.setTitle("About".uppercased(), for: .normal)
+    aboutButton.setTitle(NSLocalizedString("About", comment: "").uppercased(), for: .normal)
     aboutButton.titleLabel?.font = UIFont.systemFont(ofSize: 22.0, weight: .semibold)
     
     let bottomInset = view.safeAreaInsets.bottom
@@ -126,18 +126,18 @@ class SettingsViewController: UIViewController {
   }
   
   @IBAction private func aboutButtonTapped() {
-    let githubAction = UIAlertAction(title: "Github repository", style: .default) { (_) in
+    let githubAction = UIAlertAction(title: NSLocalizedString("Github repository", comment: ""), style: .default) { (_) in
       guard let url = URL(string: DataManager.githubUrlString) else { return }
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
-    let websiteAction = UIAlertAction(title: "My website", style: .default) { (_) in
+    let websiteAction = UIAlertAction(title: NSLocalizedString("My website", comment: ""), style: .default) { (_) in
       guard let url = URL(string: DataManager.mskrUrlString) else { return }
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
-    let rateAction = UIAlertAction(title: "Rate in App Store", style: .default) { (_) in
+    let rateAction = UIAlertAction(title: NSLocalizedString("Rate in App Store", comment: ""), style: .default) { (_) in
       SKStoreReviewController.requestReview()
     }
-    showAlert(title: "Habitude", body: viewModel.aboutAlertBodyText, button: "Ok", actions: [githubAction, websiteAction, rateAction])
+    showAlert(title: "Habitude", body: NSLocalizedString("SettingsViewModel.AboutAlertBodyText", comment: ""), button: NSLocalizedString("Ok", comment: ""), actions: [githubAction, websiteAction, rateAction])
   }
   
   @objc private func closeButtonTapped() {
@@ -146,14 +146,14 @@ class SettingsViewController: UIViewController {
   
   private func themeIndexChanged(to index: Int) {
     viewModel.themeSelectedSegmentIndex = index
-    showAlert(title: "Done", body: "Theme changed. Please, relaunch the app for the changes to take effect correctly.", button: "Ok", actions: nil)
+    showAlert(title: "Done", body: NSLocalizedString("SettingsViewController.ThemeChanged", comment: ""), button: NSLocalizedString("Ok", comment: ""), actions: nil)
   }
   
   private func badgeIndexChanged(to index: Int) {
     viewModel.badgeSelectedSegmentIndex = index
     NotificationManager.shared.updateBadgeValue { [weak self] (success) in
       guard !success else { return }
-      self?.showAlertError(error: nil, desc: "Unable to set badge value. Please, check app's permissions in system settings app and try again", critical: false)
+      self?.showAlertError(error: nil, desc: NSLocalizedString("SettingsViewController.ErrorSettingBadge", comment: ""), critical: false)
     }
   }
 }

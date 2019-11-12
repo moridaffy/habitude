@@ -14,37 +14,37 @@ struct HabitIcon {
   var placeholder: String {
     switch code {
     case "icon_habit_water":
-      return "Drink 1l of water"
+      return NSLocalizedString("Drink 1l of water", comment: "")
     case "icon_habit_tooth":
-      return "Clean your teeth"
+      return NSLocalizedString("Clean your teeth", comment: "")
     case "icon_habit_meditate":
-      return "Meditate"
+      return NSLocalizedString("Meditate", comment: "")
     case "icon_habit_nojunkfood":
-      return "Don't eat junk food"
+      return NSLocalizedString("Don't eat junk food", comment: "")
     case "icon_habit_nomilk":
-      return "Don't drink milk"
+      return NSLocalizedString("Don't drink milk", comment: "")
     case "icon_habit_book":
-      return "Read a book"
+      return NSLocalizedString("Read a book", comment: "")
     case "icon_habit_takepills":
-      return "Take pills"
+      return NSLocalizedString("Take pills", comment: "")
     case "icon_habit_sunrise":
-      return "Wake up early"
+      return NSLocalizedString("Wake up early", comment: "")
     case "icon_habit_healthyfood":
-      return "Eat healthy food"
+      return NSLocalizedString("Eat healthy food", comment: "")
     case "icon_habit_music":
-      return "Play musical instrument"
+      return NSLocalizedString("Play musical instrument", comment: "")
     case "icon_habit_feeddog":
-      return "Feed your dog"
+      return NSLocalizedString("Feed your dog", comment: "")
     case "icon_habit_feedcat":
-      return "Feed your cat"
+      return NSLocalizedString("Feed your cat", comment: "")
     case "icon_habit_clean":
-      return "Clean up"
+      return NSLocalizedString("Clean up", comment: "")
     case "icon_habit_noalcohol":
-      return "Don't drink alcohol"
+      return NSLocalizedString("Don't drink alcohol", comment: "")
     case "icon_habit_gym":
-      return "Go to gym"
+      return NSLocalizedString("Go to gym", comment: "")
     case "icon_habit_nocoffee":
-      return "Don't drink coffee"
+      return NSLocalizedString("Don't drink coffee", comment: "")
     default:
       fatalError("Unknown icon code passed: \(code)")
     }

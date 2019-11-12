@@ -114,8 +114,8 @@ class HabitCreationViewController: UIViewController {
     habitTypeSegmentSelector.tintColor = UIColor.additionalRed
     habitTypeSegmentSelector.setTitleTextAttributes([.foregroundColor: UIColor.additionalRed], for: .normal)
     habitTypeSegmentSelector.removeAllSegments()
-    habitTypeSegmentSelector.insertSegment(withTitle: "Negative", at: 0, animated: false)
-    habitTypeSegmentSelector.insertSegment(withTitle: "Positive", at: 0, animated: false)
+    habitTypeSegmentSelector.insertSegment(withTitle: NSLocalizedString("Negative", comment: ""), at: 0, animated: false)
+    habitTypeSegmentSelector.insertSegment(withTitle: NSLocalizedString("Positive", comment: ""), at: 0, animated: false)
     habitTypeSegmentSelector.selectedSegmentIndex = 0
     
     let habitTypeButtonIcon = #imageLiteral(resourceName: "icon_question_filled").withRenderingMode(.alwaysTemplate)
@@ -129,11 +129,11 @@ class HabitCreationViewController: UIViewController {
       label?.textColor = UIColor.themableSecondaryTextColor
     }
     
-    habitNameLabel.text = "Habit's name"
-    habitIconLabel.text = "Habit's icon"
-    habitColorLabel.text = "Habit's color"
-    habitTypeLabel.text = "Habit's type"
-    instructionsLabel.text = "Choose an icon and color for a new habit, enter its name (or use a template), select its type and click the \"create\" button"
+    habitNameLabel.text = NSLocalizedString("Habit's name", comment: "")
+    habitIconLabel.text = NSLocalizedString("Habit's icon", comment: "")
+    habitColorLabel.text = NSLocalizedString("Habit's color", comment: "")
+    habitTypeLabel.text = NSLocalizedString("Habit's type", comment: "")
+    instructionsLabel.text = NSLocalizedString("HabitCreationViewController.Instructions", comment: "")
   }
   
   private func setupCreateButton() {
@@ -141,7 +141,7 @@ class HabitCreationViewController: UIViewController {
     viewModel.createButtonConfigured = true
     createButton.backgroundColor = UIColor.additionalRed
     createButton.setTitleColor(UIColor.white, for: .normal)
-    createButton.setTitle("Create".uppercased(), for: .normal)
+    createButton.setTitle(NSLocalizedString("Create", comment: "").uppercased(), for: .normal)
     createButton.titleLabel?.font = UIFont.systemFont(ofSize: 22.0, weight: .semibold)
     
     let bottomInset = view.safeAreaInsets.bottom
@@ -169,7 +169,7 @@ class HabitCreationViewController: UIViewController {
   }
   
   @IBAction private func habitTypeButtonTapped() {
-    showAlert(title: "Types of habits", body: viewModel.habitTypeAlertBodyText, button: "Ok", actions: [])
+    showAlert(title: NSLocalizedString("Types of habits", comment: ""), body: NSLocalizedString("HabitCreationViewModel.HabitTypeAlertBodyText", comment: ""), button: NSLocalizedString("Ok", comment: ""), actions: [])
   }
   
   @IBAction private func createButtonTapped() {
@@ -192,10 +192,10 @@ class HabitCreationViewController: UIViewController {
   }
   
   private func showSuccessAlert() {
-    let okAction = UIAlertAction(title: "Ok", style: .default) { [weak self] (_) in
+    let okAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) { [weak self] (_) in
       self?.dismissViewController()
     }
-    showAlert(title: "Done", body: "Your habit was successfully created!", button: nil, actions: [okAction])
+    showAlert(title: NSLocalizedString("Done", comment: ""), body: NSLocalizedString("Your habit was successfully created!", comment: ""), button: nil, actions: [okAction])
   }
   
   private func dismissViewController() {

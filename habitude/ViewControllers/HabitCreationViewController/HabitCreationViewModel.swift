@@ -17,15 +17,6 @@ class HabitCreationViewModel {
   let selectedHabitColor: Variable<HabitColor>
   
   var createButtonConfigured: Bool = false
-  var habitTypeAlertBodyText: String {
-    return """
-    There are two types of habits in this app: positive and negative.
-
-    Positive habits are regular habits which have to be completed everyday. For example, drink 1l of water, go to gym and so on.
-
-    Negative habits are habits, which are automatically activated in the start of your day and must be deactivated if you fail to restrict yourself from doing something. For example, don't smoke, don't drink milk and so on.
-    """
-  }
   
   init() {
     self.icons = DataManager.habitIcons.shuffled()

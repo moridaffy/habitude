@@ -54,7 +54,7 @@ class HabitListViewController: UIViewController {
   }
   
   private func setupPlaceholderLabel() {
-    placeholderLabel.text = "Please, create a new habit using the + icon in the top right corner of the screen!"
+    placeholderLabel.text = NSLocalizedString("Please, create a new habit using the + icon in the top right corner of the screen!", comment: "")
     placeholderLabel.textColor = UIColor.themableSecondaryTextColor
     placeholderLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
   }
@@ -146,25 +146,25 @@ class HabitListViewController: UIViewController {
   private func showHabitDetailsAlert(_ habit: Habit) {
     var actions: [UIAlertAction] = []
     
-    let deleteAction = UIAlertAction(title: "Delete habit", style: .destructive) { (_) in
+    let deleteAction = UIAlertAction(title: NSLocalizedString("Delete habit", comment: ""), style: .destructive) { (_) in
       DBManager.shared.deleteHabit(habit)
       self.viewModel.reloadHabits()
     }
     actions.append(deleteAction)
     
     if habit.isActivatedToday {
-      let deactivateAction = UIAlertAction(title: "Deactivate", style: .default) { (_) in
+      let deactivateAction = UIAlertAction(title: NSLocalizedString("Deactivate", comment: ""), style: .default) { (_) in
         self.tryToDeactivateHabit(habit)
       }
       actions.append(deactivateAction)
     } else {
-      let activateAction = UIAlertAction(title: "Activate", style: .default) { (_) in
+      let activateAction = UIAlertAction(title: NSLocalizedString("Activate", comment: ""), style: .default) { (_) in
         self.tryToActivateHabit(habit)
       }
       actions.append(activateAction)
     }
     
-    showAlert(title: habit.name, body: "What do you want to do with selected habit?", button: "Cancel", actions: actions)
+    showAlert(title: habit.name, body: NSLocalizedString("What do you want to do with selected habit?", comment: ""), button: "Cancel", actions: actions)
   }
 }
 
