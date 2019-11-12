@@ -57,21 +57,6 @@ class HabitCreationViewController: UIViewController {
     self.delegate = delegate
   }
   
-  private func setupNavigationBar() {
-    let closeButtonIcon = #imageLiteral(resourceName: "icon_close").withRenderingMode(.alwaysTemplate)
-    let closeButton = UIButton()
-    closeButton.setTitle(nil, for: .normal)
-    closeButton.setImage(closeButtonIcon, for: .normal)
-    closeButton.tintColor = UIColor.additionalRed
-    closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
-    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
-    
-    NSLayoutConstraint.activate([
-      closeButton.widthAnchor.constraint(equalToConstant: 24.0),
-      closeButton.heightAnchor.constraint(equalToConstant: 24.0)
-    ])
-  }
-  
   private func setupHabitPreview() {
     habitPreviewContainerView.layer.cornerRadius = HabitCreationIconCollectionViewCell.cellSize.height / 4.0
     habitPreviewContainerView.layer.masksToBounds = true
@@ -160,15 +145,23 @@ class HabitCreationViewController: UIViewController {
     createButton.contentEdgeInsets.bottom = bottomInset
   }
   
+  private func setupNavigationBar() {
+    let closeButtonIcon = #imageLiteral(resourceName: "icon_close").withRenderingMode(.alwaysTemplate)
+    let closeButton = UIButton()
+    closeButton.setTitle(nil, for: .normal)
+    closeButton.setImage(closeButtonIcon, for: .normal)
+    closeButton.tintColor = UIColor.additionalRed
+    closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
+    
+    NSLayoutConstraint.activate([
+      closeButton.widthAnchor.constraint(equalToConstant: 24.0),
+      closeButton.heightAnchor.constraint(equalToConstant: 24.0)
+    ])
+  }
+  
   @IBAction private func habitTypeButtonTapped() {
-    let body = """
-    There are two types of habits in this app: positive and negative.
-
-    Positive habits are regular habits which have to be completed everyday. For example, drink 1l of water, go to gym and so on.
-
-    Negative habits are habits, which are automatically activated in the start of your day and must be deactivated if you fail to restrict yourself from doing something. For example, don't smoke, don't drink milk and so on.
-    """
-    showAlert(title: "Types of habits", body: body, button: "Ok", actions: [])
+    showAlert(title: "Types of habits", body: viewModel.habitTypeAlertBodyText, button: "Ok", actions: [])
   }
   
   @IBAction private func createButtonTapped() {

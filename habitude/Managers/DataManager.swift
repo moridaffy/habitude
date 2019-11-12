@@ -12,15 +12,13 @@ class DataManager {
   
   enum Keys: String {
     case lastCreatedHabitId = "ru.mskr.habitude.lastCreatedHabitId"
+    case themeSettingValue = "ru.mskr.habitude.themeSettingValue"
+    case badgeSettingValue = "ru.mskr.habitude.badgeSettingValue"
   }
   
   static let shared = DataManager()
   
-  func getHabitId() -> String {
-    let lastCreatedHabitId = getInt(forKey: .lastCreatedHabitId) ?? 1
-    setValue(forKey: .lastCreatedHabitId, value: lastCreatedHabitId + 1)
-    return "\(lastCreatedHabitId)"
-  }
+  // MARK: - Generic methods
   
   func getString(forKey key: Keys) -> String? {
     return UserDefaults.standard.value(forKey: key.rawValue) as? String
@@ -33,10 +31,21 @@ class DataManager {
   func setValue(forKey key: Keys, value: Any?) {
     UserDefaults.standard.set(value, forKey: key.rawValue)
   }
-}
-
-extension DataManager {
-  func getHabitIcons() -> [HabitIcon] {
+  
+  // MARK: - Specific methods
+  
+  func getHabitId() -> String {
+    let lastCreatedHabitId = getInt(forKey: .lastCreatedHabitId) ?? 1
+    setValue(forKey: .lastCreatedHabitId, value: lastCreatedHabitId + 1)
+    return "\(lastCreatedHabitId)"
+  }
+  
+  // MARK: - Constant values
+  
+  static var githubUrlString: String { return "https://github.com/moridaffy/habitude" }
+  static var mskrUrlString: String { return "http://mskr.name" }
+  
+  static var habitIcons: [HabitIcon] {
     return [
       HabitIcon(code: "icon_habit_water"),
       HabitIcon(code: "icon_habit_tooth"),
@@ -57,7 +66,7 @@ extension DataManager {
     ]
   }
   
-  func getHabitColors() -> [HabitColor] {
+  static var habitColors: [HabitColor] {
     return [
       HabitColor(code: "2EC4B6"),
       HabitColor(code: "38A700"),
@@ -76,5 +85,43 @@ extension DataManager {
       HabitColor(code: "00818A"),
       HabitColor(code: "083D77")
     ]
+  }
+}
+
+extension DataManager {
+  // MARK: - App settings
+  
+  enum ThemeSetting: Int {
+    case automatic
+    case light
+    case dark
+    
+    static var current: ThemeSetting {
+      get {
+        let value = DataManager.shared.getInt(forKey: .themeSettingValue) ?? 0
+        return ThemeSetting(rawValue: value) ?? .automatic
+      }
+      set {
+        let value = newValue.rawValue
+        DataManager.shared.setValue(forKey: .themeSettingValue, value: value)
+      }
+    }
+  }
+  
+  enum BadgeSetting: Int {
+    case none
+    case activated
+    case nonactivated
+    
+    static var current: BadgeSetting {
+      get {
+        let value = DataManager.shared.getInt(forKey: .badgeSettingValue) ?? 0
+        return BadgeSetting(rawValue: value) ?? .none
+      }
+      set {
+        let value = newValue.rawValue
+        DataManager.shared.setValue(forKey: .badgeSettingValue, value: value)
+      }
+    }
   }
 }
