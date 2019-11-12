@@ -36,7 +36,7 @@ class HabitListCollectionViewCell: HabitudeCollectionViewCell {
     setupContainerView()
     setupHabit()
     setupActions()
-    setupReactive()
+//    setupReactive()
   }
   
   private func setupContainerView() {
