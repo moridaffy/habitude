@@ -75,8 +75,8 @@ class SettingsViewController: UIViewController {
     }
     badgeSegmentSelector.setTitleTextAttributes([.foregroundColor: UIColor.additionalRed], for: .normal)
     badgeSegmentSelector.removeAllSegments()
-    badgeSegmentSelector.insertSegment(withTitle: "Activated", at: 0, animated: false)
     badgeSegmentSelector.insertSegment(withTitle: "Nonactivated", at: 0, animated: false)
+    badgeSegmentSelector.insertSegment(withTitle: "Activated", at: 0, animated: false)
     badgeSegmentSelector.insertSegment(withTitle: "None", at: 0, animated: false)
     badgeSegmentSelector.selectedSegmentIndex = viewModel.badgeSelectedSegmentIndex
   }
@@ -147,5 +147,9 @@ class SettingsViewController: UIViewController {
   
   private func badgeIndexChanged(to index: Int) {
     viewModel.badgeSelectedSegmentIndex = index
+    NotificationManager.shared.updateBadgeValue { [weak self] (success) in
+      guard !success else { return }
+      self?.showAlertError(error: nil, desc: "Unable to set badge value. Please, check app's permissions in system settings app and try again", critical: false)
+    }
   }
 }

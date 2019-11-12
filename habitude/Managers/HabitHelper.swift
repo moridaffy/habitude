@@ -25,6 +25,7 @@ class HabitHelper {
   /// - Parameter habit: selected habit
   /// - Parameter activate: if false -> will try to delete today's activation of passed habit
   func activateHabit(habit: Habit, activate: Bool = true) {
+    NotificationManager.shared.updateBadgeValue(completion: nil)
     if activate {
       let activation = HabitActivation(habitId: habit.id, date: Date())
       SoundHelper.shared.playSound(.activation)

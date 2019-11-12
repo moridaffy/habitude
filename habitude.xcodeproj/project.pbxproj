@@ -34,6 +34,7 @@
 		0C662C402354511F00515DF8 /* HabitListCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C662C3F2354511F00515DF8 /* HabitListCollectionViewCellModel.swift */; };
 		0C662C452354554900515DF8 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 0C662C442354554900515DF8 /* RxDataSources */; };
 		0C662C482354559D00515DF8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C662C472354559D00515DF8 /* RealmSwift */; };
+		0C7B92B5237B0E23009072EA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B92B4237B0E23009072EA /* NotificationManager.swift */; };
 		0C7BE7372365EFC20003AA19 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7BE7362365EFC20003AA19 /* DBManager.swift */; };
 		0C9615182366BF990038C48D /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9615172366BF990038C48D /* DateHelper.swift */; };
 		0C96151B2366C4140038C48D /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 0C96151A2366C4140038C48D /* RxRealm */; };
@@ -76,6 +77,7 @@
 		0C662C3B2354510A00515DF8 /* HabitListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C662C3C2354510A00515DF8 /* HabitListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitListCollectionViewCell.xib; sourceTree = "<group>"; };
 		0C662C3F2354511F00515DF8 /* HabitListCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListCollectionViewCellModel.swift; sourceTree = "<group>"; };
+		0C7B92B4237B0E23009072EA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0C7BE7362365EFC20003AA19 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		0C9615172366BF990038C48D /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		0C96151C2366C4900038C48D /* HabitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitHelper.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				0C9615172366BF990038C48D /* DateHelper.swift */,
 				0CD747822376FD3B00FA3A33 /* SoundHelper.swift */,
 				0C96151C2366C4900038C48D /* HabitHelper.swift */,
+				0C7B92B4237B0E23009072EA /* NotificationManager.swift */,
 				0CB7DA352356474B00D93033 /* DataManager.swift */,
 				0C7BE7362365EFC20003AA19 /* DBManager.swift */,
 			);
@@ -372,6 +375,7 @@
 				0C5F44BF23647C3B004604EA /* HabitCreationIconCollectionViewCellModel.swift in Sources */,
 				0C22433923538F7F002474CD /* SettingsViewModel.swift in Sources */,
 				0C5F44C52364995E004604EA /* UIViewController+Alerts.swift in Sources */,
+				0C7B92B5237B0E23009072EA /* NotificationManager.swift in Sources */,
 				0C5F44BC23647C28004604EA /* HabitCreationIconCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
