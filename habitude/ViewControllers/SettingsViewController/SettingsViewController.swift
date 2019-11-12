@@ -63,6 +63,7 @@ class SettingsViewController: UIViewController {
       themeSegmentSelector.selectedSegmentTintColor = UIColor.themableSecondaryBackground
       themeSegmentSelector.insertSegment(withTitle: "Automatic", at: 0, animated: false)
     }
+    themeSegmentSelector.tintColor = UIColor.additionalRed
     themeSegmentSelector.setTitleTextAttributes([.foregroundColor: UIColor.additionalRed], for: .normal)
     themeSegmentSelector.insertSegment(withTitle: "Dark", at: 0, animated: false)
     themeSegmentSelector.insertSegment(withTitle: "Light", at: 0, animated: false)
@@ -73,6 +74,7 @@ class SettingsViewController: UIViewController {
     if #available(iOS 13.0, *) {
       badgeSegmentSelector.selectedSegmentTintColor = UIColor.themableSecondaryBackground
     }
+    badgeSegmentSelector.tintColor = UIColor.additionalRed
     badgeSegmentSelector.setTitleTextAttributes([.foregroundColor: UIColor.additionalRed], for: .normal)
     badgeSegmentSelector.removeAllSegments()
     badgeSegmentSelector.insertSegment(withTitle: "Nonactivated", at: 0, animated: false)
@@ -114,6 +116,8 @@ class SettingsViewController: UIViewController {
     closeButton.tintColor = UIColor.additionalRed
     closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
+    navigationController?.navigationBar.isTranslucent = false
+    navigationController?.navigationBar.barTintColor = UIColor.themableNavigationBarColor
     
     NSLayoutConstraint.activate([
       closeButton.widthAnchor.constraint(equalToConstant: 24.0),

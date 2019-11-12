@@ -111,6 +111,7 @@ class HabitCreationViewController: UIViewController {
     if #available(iOS 13.0, *) {
       habitTypeSegmentSelector.selectedSegmentTintColor = UIColor.themableSecondaryBackground
     }
+    habitTypeSegmentSelector.tintColor = UIColor.additionalRed
     habitTypeSegmentSelector.setTitleTextAttributes([.foregroundColor: UIColor.additionalRed], for: .normal)
     habitTypeSegmentSelector.removeAllSegments()
     habitTypeSegmentSelector.insertSegment(withTitle: "Negative", at: 0, animated: false)
@@ -158,6 +159,8 @@ class HabitCreationViewController: UIViewController {
     closeButton.tintColor = UIColor.additionalRed
     closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
+    navigationController?.navigationBar.isTranslucent = false
+    navigationController?.navigationBar.barTintColor = UIColor.themableNavigationBarColor
     
     NSLayoutConstraint.activate([
       closeButton.widthAnchor.constraint(equalToConstant: 24.0),
