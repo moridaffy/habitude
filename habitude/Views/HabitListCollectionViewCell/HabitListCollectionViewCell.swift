@@ -60,7 +60,7 @@ class HabitListCollectionViewCell: HabitudeCollectionViewCell {
   }
   
   private func setupReactive() {
-    Observable.from(viewModel.habit.activations)
+    Observable.collection(from: viewModel.habit.activations)
       .subscribe { [weak self] (event) in
         guard let activations = event.element, !activations.isInvalidated else { return }
         let filteredActivations = activations.filter({ $0.isActive }).sorted(by: { $0.globalDay > $1.globalDay })

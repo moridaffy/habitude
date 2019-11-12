@@ -7,22 +7,22 @@
 //
 
 import UIKit
-import RxSwift
+import RxCocoa
 
 class HabitCreationViewModel {
 
   let icons: [HabitIcon]
   let colors: [HabitColor]
-  let selectedHabitIcon: Variable<HabitIcon>
-  let selectedHabitColor: Variable<HabitColor>
+  let selectedHabitIcon: BehaviorRelay<HabitIcon>
+  let selectedHabitColor: BehaviorRelay<HabitColor>
   
   var createButtonConfigured: Bool = false
   
   init() {
     self.icons = DataManager.habitIcons.shuffled()
     self.colors = DataManager.habitColors.shuffled()
-    self.selectedHabitIcon = Variable(self.icons[0])
-    self.selectedHabitColor = Variable(self.colors[0])
+    self.selectedHabitIcon = BehaviorRelay(value: self.icons[0])
+    self.selectedHabitColor = BehaviorRelay(value: self.colors[0])
   }
   
   func getColorForIconPreview(at row: Int) -> HabitColor {

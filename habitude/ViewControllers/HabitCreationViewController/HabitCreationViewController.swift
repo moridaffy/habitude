@@ -218,9 +218,9 @@ extension HabitCreationViewController: UICollectionViewDelegate, UICollectionVie
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch collectionView {
     case habitIconCollectionView:
-      viewModel.selectedHabitIcon.value = viewModel.icons[indexPath.row]
+      viewModel.selectedHabitIcon.accept(viewModel.icons[indexPath.row])
     case habitColorCollectionView:
-      viewModel.selectedHabitColor.value = viewModel.colors[indexPath.row]
+      viewModel.selectedHabitColor.accept(viewModel.colors[indexPath.row])
     default:
       break
     }

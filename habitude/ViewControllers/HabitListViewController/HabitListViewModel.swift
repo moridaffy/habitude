@@ -6,17 +6,18 @@
 //  Copyright © 2019 MSKR. All rights reserved.
 //
 
-import RxSwift
+import RxCocoa
 
 class HabitListViewModel {
   
-  let habits = Variable([] as [Habit])
+  let habits = BehaviorRelay<[Habit]>(value: [])
   
   init() {
     reloadHabits()
   }
   
   func reloadHabits() {
-    self.habits.value = Array(DBManager.shared.getObjects(type: Habit.self, predicate: nil))
+    let habits = Array(DBManager.shared.getObjects(type: Habit.self, predicate: nil))
+    self.habits.accept(habits)
   }
 }
