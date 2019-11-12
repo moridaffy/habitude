@@ -52,7 +52,7 @@
 
 /* Begin PBXFileReference section */
 		0C192BD92379D36500D03E33 /* HabitudeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitudeCollectionViewCell.swift; sourceTree = "<group>"; };
-		0C1F249F23537B4B00533AF1 /* habitude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = habitude.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C1F249F23537B4B00533AF1 /* Habitude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C1F24A223537B4B00533AF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C1F24A923537B4C00533AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C1F24AC23537B4C00533AF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 		0C1F24A023537B4B00533AF1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0C1F249F23537B4B00533AF1 /* habitude.app */,
+				0C1F249F23537B4B00533AF1 /* Habitude.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 				0C96151A2366C4140038C48D /* RxRealm */,
 			);
 			productName = habitude;
-			productReference = 0C1F249F23537B4B00533AF1 /* habitude.app */;
+			productReference = 0C1F249F23537B4B00533AF1 /* Habitude.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -541,7 +541,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mskr.habitude;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Habitude;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -561,7 +561,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.mskr.habitude;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Habitude;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
