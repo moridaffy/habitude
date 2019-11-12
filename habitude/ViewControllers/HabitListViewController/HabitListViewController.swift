@@ -33,6 +33,8 @@ class HabitListViewController: UIViewController {
     let createButton = getCreateButton()
     navigationItem.leftBarButtonItem = UIBarButtonItem(customView: settingsButton)
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: createButton)
+    navigationController?.navigationBar.isTranslucent = false
+    navigationController?.navigationBar.barTintColor = UIColor.themableNavigationBarColor
     
     NSLayoutConstraint.activate([
       settingsButton.widthAnchor.constraint(equalToConstant: 24.0),
@@ -48,11 +50,12 @@ class HabitListViewController: UIViewController {
     collectionView.setCollectionViewLayout(layout, animated: false)
     collectionView.contentInset = UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
     collectionView.register(UINib(nibName: "HabitListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HabitListCollectionViewCell")
+    collectionView.backgroundColor = UIColor.themableBackground
   }
   
   private func setupPlaceholderLabel() {
     placeholderLabel.text = "Please, create a new habit using the + icon in the top right corner of the screen!"
-    placeholderLabel.textColor = UIColor.systemGray
+    placeholderLabel.textColor = UIColor.themableSecondaryTextColor
     placeholderLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
   }
   

@@ -16,10 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
     HabitHelper.shared.configure()
+    updateThemeOptions()
     
     print("🔥 \(NSHomeDirectory())")
     
     return true
+  }
+  
+  private func updateThemeOptions() {
+    guard #available(iOS 13.0, *) else { return }
+    switch DataManager.ThemeSetting.current {
+    case .automatic:
+      break
+    case .light:
+      window?.overrideUserInterfaceStyle = .light
+    case .dark:
+      window?.overrideUserInterfaceStyle = .dark
+    }
   }
 }
 

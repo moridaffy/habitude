@@ -25,6 +25,8 @@ class SettingsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = UIColor.themableSecondaryBackground
+    
     setupReactive()
     setupThemeSelection()
     setupBadgeSelection()
@@ -57,13 +59,21 @@ class SettingsViewController: UIViewController {
   
   private func setupThemeSelection() {
     themeSegmentSelector.removeAllSegments()
+    if #available(iOS 13.0, *) {
+      themeSegmentSelector.selectedSegmentTintColor = UIColor.themableSecondaryBackground
+      themeSegmentSelector.insertSegment(withTitle: "Automatic", at: 0, animated: false)
+    }
+    themeSegmentSelector.setTitleTextAttributes([.foregroundColor: UIColor.additionalRed], for: .normal)
     themeSegmentSelector.insertSegment(withTitle: "Dark", at: 0, animated: false)
     themeSegmentSelector.insertSegment(withTitle: "Light", at: 0, animated: false)
-    themeSegmentSelector.insertSegment(withTitle: "Automatic", at: 0, animated: false)
     themeSegmentSelector.selectedSegmentIndex = viewModel.themeSelectedSegmentIndex
   }
   
   private func setupBadgeSelection() {
+    if #available(iOS 13.0, *) {
+      badgeSegmentSelector.selectedSegmentTintColor = UIColor.themableSecondaryBackground
+    }
+    badgeSegmentSelector.setTitleTextAttributes([.foregroundColor: UIColor.additionalRed], for: .normal)
     badgeSegmentSelector.removeAllSegments()
     badgeSegmentSelector.insertSegment(withTitle: "Activated", at: 0, animated: false)
     badgeSegmentSelector.insertSegment(withTitle: "Nonactivated", at: 0, animated: false)
@@ -74,7 +84,7 @@ class SettingsViewController: UIViewController {
   private func setupLabels() {
     for label in [themeLabel, badgeLabel] {
       label?.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
-      label?.textColor = UIColor.systemGray
+      label?.textColor = UIColor.themableSecondaryTextColor
     }
     
     themeLabel.text = "Theme"

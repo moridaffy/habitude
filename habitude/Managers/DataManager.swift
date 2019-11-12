@@ -92,14 +92,20 @@ extension DataManager {
   // MARK: - App settings
   
   enum ThemeSetting: Int {
-    case automatic
     case light
     case dark
+    case automatic
     
     static var current: ThemeSetting {
       get {
-        let value = DataManager.shared.getInt(forKey: .themeSettingValue) ?? 0
-        return ThemeSetting(rawValue: value) ?? .automatic
+        let value = DataManager.shared.getInt(forKey: .themeSettingValue)
+        if let value = value {
+          return ThemeSetting(rawValue: value) ?? .automatic
+        } else if #available(iOS 13.0, *) {
+          return .automatic
+        } else {
+          return .light
+        }
       }
       set {
         let value = newValue.rawValue

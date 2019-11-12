@@ -37,6 +37,8 @@ class HabitCreationViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = UIColor.themableSecondaryBackground
+    
     setupHabitPreview()
     setupNameTextField()
     setupIconCollectionView()
@@ -72,8 +74,7 @@ class HabitCreationViewController: UIViewController {
     viewModel.selectedHabitIcon.asObservable()
       .subscribe { [weak self] (event) in
         guard let icon = event.element else { return }
-        self?.habitPreviewIconImageView.image = icon.icon?.withRenderingMode(.alwaysTemplate)
-        self?.habitNameTextField.placeholder = icon.placeholder
+        self?.newHabitIconSelected(icon)
     }.disposed(by: disposeBag)
   }
   
@@ -84,8 +85,8 @@ class HabitCreationViewController: UIViewController {
     habitNameTextField.layer.cornerRadius = 15.0
     habitNameTextField.layer.masksToBounds = true
     habitNameTextField.font = UIFont.systemFont(ofSize: 22.0, weight: .semibold)
-    habitNameTextField.textColor = UIColor.systemGray
-    habitNameTextField.backgroundColor = UIColor.additionalGrayLight
+    habitNameTextField.textColor = UIColor.themableTextColor
+    habitNameTextField.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
   }
   
   private func setupIconCollectionView() {
@@ -107,6 +108,10 @@ class HabitCreationViewController: UIViewController {
   }
   
   private func setupTypeSelection() {
+    if #available(iOS 13.0, *) {
+      habitTypeSegmentSelector.selectedSegmentTintColor = UIColor.themableSecondaryBackground
+    }
+    habitTypeSegmentSelector.setTitleTextAttributes([.foregroundColor: UIColor.additionalRed], for: .normal)
     habitTypeSegmentSelector.removeAllSegments()
     habitTypeSegmentSelector.insertSegment(withTitle: "Negative", at: 0, animated: false)
     habitTypeSegmentSelector.insertSegment(withTitle: "Positive", at: 0, animated: false)
@@ -120,7 +125,7 @@ class HabitCreationViewController: UIViewController {
   private func setupLabels() {
     for label in [habitNameLabel, habitIconLabel, habitColorLabel, habitTypeLabel, instructionsLabel] {
       label?.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
-      label?.textColor = UIColor.systemGray
+      label?.textColor = UIColor.themableSecondaryTextColor
     }
     
     habitNameLabel.text = "Habit's name"
@@ -173,6 +178,14 @@ class HabitCreationViewController: UIViewController {
   
   @objc private func closeButtonTapped() {
     dismissViewController()
+  }
+  
+  private func newHabitIconSelected(_ icon: HabitIcon) {
+    habitPreviewIconImageView.image = icon.icon?.withRenderingMode(.alwaysTemplate)
+    
+    let attributedPlaceholder = NSAttributedString(string: icon.placeholder,
+                                                   attributes: [.foregroundColor: UIColor.themableSecondaryTextColor])
+    habitNameTextField.attributedPlaceholder = attributedPlaceholder
   }
   
   private func showSuccessAlert() {
