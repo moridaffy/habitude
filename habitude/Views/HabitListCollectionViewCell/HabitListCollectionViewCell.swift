@@ -6,9 +6,9 @@
 //  Copyright © 2019 MSKR. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxRealm
+import RxSwift
+import UIKit
 
 protocol HabitListCollectionViewCellDelegate: class {
   func didActivateHabit(_ habit: Habit)
@@ -67,7 +67,7 @@ class HabitListCollectionViewCell: HabitudeCollectionViewCell {
         let streakCount = Habit.getStreakCount(Array(filteredActivations))
         self?.counterLabel.text = "\(streakCount)"
         self?.updateActivatedState(activated: filteredActivations.first?.isToday ?? false)
-    }.disposed(by: disposeBag)
+      }.disposed(by: disposeBag)
   }
   
   private func setupActions() {

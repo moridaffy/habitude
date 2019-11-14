@@ -6,9 +6,9 @@
 //  Copyright © 2019 MSKR. All rights reserved.
 //
 
-import UIKit
 import RxSwift
 import StoreKit
+import UIKit
 
 class SettingsViewController: UIViewController {
   
@@ -42,19 +42,20 @@ class SettingsViewController: UIViewController {
   }
   
   private func setupReactive() {
+    
     themeSegmentSelector.rx.selectedSegmentIndex
       .skip(1)
-      .subscribe() { [weak self] event in
+      .subscribe { [weak self] (event) in
         guard let newIndex = event.element else { return }
         self?.themeIndexChanged(to: newIndex)
-    }.disposed(by: disposeBag)
+      }.disposed(by: disposeBag)
     
     badgeSegmentSelector.rx.selectedSegmentIndex
       .skip(1)
-      .subscribe() { [weak self] event in
+      .subscribe { [weak self] event in
         guard let newIndex = event.element else { return }
         self?.badgeIndexChanged(to: newIndex)
-    }.disposed(by: disposeBag)
+      }.disposed(by: disposeBag)
   }
   
   private func setupThemeSelection() {
@@ -126,6 +127,14 @@ class SettingsViewController: UIViewController {
   }
   
   @IBAction private func aboutButtonTapped() {
+    showAboutAlert()
+  }
+  
+  @objc private func closeButtonTapped() {
+    dismiss(animated: true, completion: nil)
+  }
+  
+  private func showAboutAlert() {
     let githubAction = UIAlertAction(title: NSLocalizedString("Github repository", comment: ""), style: .default) { (_) in
       guard let url = URL(string: DataManager.githubUrlString) else { return }
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -137,11 +146,9 @@ class SettingsViewController: UIViewController {
     let rateAction = UIAlertAction(title: NSLocalizedString("Rate in App Store", comment: ""), style: .default) { (_) in
       SKStoreReviewController.requestReview()
     }
-    showAlert(title: "Habitude", body: NSLocalizedString("SettingsViewModel.AboutAlertBodyText", comment: ""), button: NSLocalizedString("Ok", comment: ""), actions: [githubAction, websiteAction, rateAction])
-  }
-  
-  @objc private func closeButtonTapped() {
-    dismiss(animated: true, completion: nil)
+    let bodyText = NSLocalizedString("SettingsViewModel.AboutAlertBodyText", comment: "")
+    let buttonText = NSLocalizedString("Ok", comment: "")
+    showAlert(title: "Habitude", body: bodyText, button: buttonText, actions: [githubAction, websiteAction, rateAction])
   }
   
   private func themeIndexChanged(to index: Int) {

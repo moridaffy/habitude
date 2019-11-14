@@ -6,9 +6,9 @@
 //  Copyright © 2019 MSKR. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxDataSources
+import RxSwift
+import UIKit
 
 class HabitListViewController: UIViewController {
   
@@ -62,7 +62,9 @@ class HabitListViewController: UIViewController {
   private func setupReactive() {
     viewModel.habits.asObservable()
       .bind(to: collectionView.rx.items) { collectionView, row, habit in
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitListCollectionViewCell", for: IndexPath(row: row, section: 0)) as? HabitListCollectionViewCell else { fatalError() }
+        let indexPath = IndexPath(row: row, section: 0)
+        let reuseIdentifier = "HabitListCollectionViewCell"
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? HabitListCollectionViewCell else { fatalError() }
         cell.setup(habit: habit, delegate: self)
         return cell
       }.disposed(by: disposeBag)
@@ -96,7 +98,7 @@ class HabitListViewController: UIViewController {
   }
   
   private func getCollectionViewLayout(sideInset: CGFloat) -> UICollectionViewFlowLayout {
-    let cellWidth = UIScreen.main.bounds.width / 2.0  - sideInset * 2.0
+    let cellWidth = UIScreen.main.bounds.width / 2.0 - sideInset * 2.0
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
     layout.itemSize = CGSize(width: cellWidth, height: cellWidth)
@@ -113,7 +115,8 @@ class HabitListViewController: UIViewController {
   // MARK: - Actions
   
   @objc private func createButtonTapped() {
-    guard let habitCreationViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "HabitCreationViewController") as? HabitCreationViewController else { fatalError() }
+    guard let habitCreationViewController = UIStoryboard(name: "Root", bundle: nil)
+      .instantiateViewController(withIdentifier: "HabitCreationViewController") as? HabitCreationViewController else { fatalError() }
     habitCreationViewController.setup(delegate: self)
     if #available(iOS 13.0, *) {
       present(habitCreationViewController, animated: true, completion: nil)
@@ -124,7 +127,8 @@ class HabitListViewController: UIViewController {
   }
   
   @objc private func settingsButtonTapped() {
-    guard let settingsViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController else { fatalError() }
+    guard let settingsViewController = UIStoryboard(name: "Root", bundle: nil)
+      .instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController else { fatalError() }
     if #available(iOS 13.0, *) {
       present(settingsViewController, animated: true, completion: nil)
     } else {

@@ -18,7 +18,7 @@ class HabitHelper {
   }
   
   func checkIfActivatedToday(habit: Habit) -> Bool {
-    return habit.sortedActivations.filter({ $0.isActive }).first?.isToday ?? false
+    return habit.sortedActivations.first(where: { $0.isActive })?.isToday ?? false
   }
   
   /// Activate habit or cancel it's activation

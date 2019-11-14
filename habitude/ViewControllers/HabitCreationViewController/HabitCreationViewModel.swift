@@ -6,8 +6,8 @@
 //  Copyright © 2019 MSKR. All rights reserved.
 //
 
-import UIKit
 import RxCocoa
+import UIKit
 
 class HabitCreationViewModel {
 

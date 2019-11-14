@@ -6,7 +6,7 @@
 //  Copyright © 2019 MSKR. All rights reserved.
 //
 
-class  HabitCreationColorCollectionViewCellModel {
+class HabitCreationColorCollectionViewCellModel {
   
   let color: HabitColor
   

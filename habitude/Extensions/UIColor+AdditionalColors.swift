@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIColor {
+  //swiftlint:disable object_literal
   static var additionalRed: UIColor {
     return UIColor(red: 0.94, green: 0.22, blue: 0.25, alpha: 1.0)
   }

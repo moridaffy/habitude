@@ -6,8 +6,8 @@
 //  Copyright © 2019 MSKR. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 protocol HabitCreationViewControllerDelegate: class {
   func didCreateNewHabit()
@@ -69,13 +69,13 @@ class HabitCreationViewController: UIViewController {
         guard let color = event.element?.color else { return }
         self?.habitPreviewContainerView.backgroundColor = color
         self?.habitTypeButton.tintColor = color
-    }.disposed(by: disposeBag)
+      }.disposed(by: disposeBag)
     
     viewModel.selectedHabitIcon.asObservable()
       .subscribe { [weak self] (event) in
         guard let icon = event.element else { return }
         self?.newHabitIconSelected(icon)
-    }.disposed(by: disposeBag)
+      }.disposed(by: disposeBag)
   }
   
   private func setupNameTextField() {
@@ -169,7 +169,7 @@ class HabitCreationViewController: UIViewController {
   }
   
   @IBAction private func habitTypeButtonTapped() {
-    showAlert(title: NSLocalizedString("Types of habits", comment: ""), body: NSLocalizedString("HabitCreationViewModel.HabitTypeAlertBodyText", comment: ""), button: NSLocalizedString("Ok", comment: ""), actions: [])
+    showHabitTypeAlert()
   }
   
   @IBAction private func createButtonTapped() {
@@ -189,6 +189,13 @@ class HabitCreationViewController: UIViewController {
     let attributedPlaceholder = NSAttributedString(string: icon.placeholder,
                                                    attributes: [.foregroundColor: UIColor.themableSecondaryTextColor])
     habitNameTextField.attributedPlaceholder = attributedPlaceholder
+  }
+  
+  private func showHabitTypeAlert() {
+    let titleText = NSLocalizedString("Types of habits", comment: "")
+    let bodyText = NSLocalizedString("HabitCreationViewModel.HabitTypeAlertBodyText", comment: "")
+    let buttonText = NSLocalizedString("Ok", comment: "")
+    showAlert(title: titleText, body: bodyText, button: buttonText, actions: [])
   }
   
   private func showSuccessAlert() {
@@ -242,13 +249,15 @@ extension HabitCreationViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     switch collectionView {
     case habitIconCollectionView:
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitCreationIconCollectionViewCell", for: indexPath) as? HabitCreationIconCollectionViewCell else { fatalError() }
+      let reuseIdentifier = "HabitCreationIconCollectionViewCell"
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? HabitCreationIconCollectionViewCell else { fatalError() }
       let icon = viewModel.icons[indexPath.row]
       let color = viewModel.getColorForIconPreview(at: indexPath.row)
       cell.setup(viewModel: HabitCreationIconCollectionViewCellModel(icon: icon, color: color))
       return cell
     case habitColorCollectionView:
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitCreationColorCollectionViewCell", for: indexPath) as? HabitCreationColorCollectionViewCell else { fatalError() }
+      let reuseIdentifier = "HabitCreationColorCollectionViewCell"
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? HabitCreationColorCollectionViewCell else { fatalError() }
       let color = viewModel.getColorForIconPreview(at: indexPath.row)
       cell.setup(viewModel: HabitCreationColorCollectionViewCellModel(color: color))
       return cell

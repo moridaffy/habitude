@@ -11,6 +11,7 @@ import Foundation
 class DateHelper {
   static func getDay(from date: Date = Date()) -> Int {
     let calendar = Calendar.current
+    //swiftlint:disable:next force_unwrapping
     return calendar.ordinality(of: .day, in: .year, for: date)!
   }
   
