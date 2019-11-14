@@ -1,0 +1,51 @@
+opt_in_rules:
+  - closure_end_indentation
+  - empty_count
+  - explicit_init
+  - first_where
+  - force_unwrapping
+  - missing_docs
+  - object_literal
+  - operator_usage_whitespace
+  - private_outlet
+  - redundant_nil_coalescing
+  - sorted_imports
+  - switch_case_on_newline
+
+disabled_rules:
+  - trailing_whitespace
+  - attributes
+class_delegate_protocol:
+  severity: error
+
+function_body_length:
+  warning: 70
+  error: 100
+
+file_length:
+  warning: 500
+  error: 700
+
+line_length:
+  warning: 175
+  error: 200
+
+variable_name:
+  min_length:
+    warning: 1
+    error: 0
+  max_length:
+    warning: 50
+    error: 70
+
+type_name:
+  min_length:
+    warning: 1
+    error: 0
+  max_length:
+    warning: 50
+    error: 70
+
+excluded:
+  - Carthage
+  - Pods
